@@ -182,6 +182,11 @@
 </head>
   
 <body class="bg-slate-50 text-slate-800 font-sans antialiased">
+    <!-- Scroll Progress Bar Container -->
+  <div class="scroll-progress-container">
+    <div class="scroll-progress-bar" id="progressBar"></div>
+  </div>
+
   <main class="max-w-3xl mx-auto px-6 py-16">
     <header class="border-b border-slate-200 pb-8 flex flex-col md:flex-row items-center gap-8 text-center md:text-left">
       <!-- Profile Image -->
@@ -261,6 +266,41 @@
       <p>Hosted on GitHub Pages</p>
     </footer>
   </main>
+  <!-- Back to Top Button -->
+  <button id="backToTop" class="back-to-top" aria-label="Return to top" title="بازگشت به بالای صفحه">
+    <img src="drea.jpg" alt="Dr. Ehsan Abedini">
+  </button>
+  <script>
+    // Scroll Progress Bar & Back to Top Controller
+    const progressBar = document.getElementById('progressBar');
+    const backToTopBtn = document.getElementById('backToTop');
+
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      
+      // Calculate scroll percentage
+      const progressPercent = (scrollTop / scrollHeight) * 100;
+      if (progressBar) {
+        progressBar.style.width = progressPercent + '%';
+      }
+
+      // Show/Hide Back to Top button
+      if (scrollTop > 250) {
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
+    });
+
+    // Smooth scroll to top on click
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  </script>
 
 </body>
 </html>
