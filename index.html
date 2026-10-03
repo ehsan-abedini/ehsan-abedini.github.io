@@ -72,21 +72,40 @@
   </script>
 <style>
   .interests {
-    margin: 28px 0;
+    margin: 32px 0;
   }
   .tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 12px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px 14px;
+  }
+  @media (max-width: 600px) {
+    .tags { grid-template-columns: 1fr; }
   }
   .tag {
-    background: #f1f5f9;
-    color: #334155;
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 0.88rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    background: #f8fafc;
+    padding: 10px 14px;
+    border-radius: 10px;
     border: 1px solid #e2e8f0;
+    transition: all .2s ease;
+  }
+  .tag:hover {
+    border-color: #94a3b8;
+    background: #ffffff;
+    box-shadow: 0 2px 8px rgba(0,0,0,.06);
+  }
+  .tag .en {
+    font-weight: 600;
+    color: #1e293b;
+    font-size: 0.92rem;
+    line-height: 1.4;
+  }
+  .tag .fa {
+    color: #64748b;
+    font-size: 0.8rem;
     line-height: 1.6;
   }
 </style>
@@ -119,7 +138,6 @@
       <p class="text-slate-700">
       <p>Researcher in Health Management and Policy at the Health Sciences Research Center, Mazandaran University of Medical Sciences. Focus areas include health data governance, hospital financial management, urban primary healthcare, and advanced statistical computing with SEM & R. Serving as an Academic Editor for <em>PLOS ONE</em> and <em>Medical Science</em>.
       </p>
-
     </section>
 
     <!-- Persian About (سیگنال قدرتمند سئو برای موتور جستجوی فارسی) -->
@@ -128,24 +146,23 @@
       <p class="text-slate-700">
       <p><strong>دکتر احسان عابدینی</strong>، پژوهشگر مدیریت خدمات بهداشتی و درمانی در مرکز تحقیقات علوم بهداشتی دانشگاه علوم پزشکی مازندران. حوزه‌های پژوهشی شامل حکمرانی داده‌های سلامت، مدیریت مالی و هزینه-فایده بیمارستانی، مراقبت‌های اولیه و سلامت شهری، و مدلسازی معادلات ساختاری (SEM). ادیتور آکادمیک مجلات بین‌المللی <em>PLOS ONE</em> و <em>Medical Science</em>.
       </p>
-
     </section>
 
-    <section class="interests">
-      <h2>Research Interests | علایق پژوهشی</h2>
-      <div class="tags">
-        <span class="tag">Health Data Governance (حکمرانی داده‌های سلامت)</span>
-        <span class="tag">Hospital Financial Management (مدیریت مالی بیمارستانی)</span>
-        <span class="tag">Structural Equation Modeling & R (مدلسازی معادلات ساختاری)</span>
-        <span class="tag">Health Information Systems & Digital Health (سلامت دیجیتال و HIS)</span>
-        <span class="tag">Urban Primary Healthcare (مراقبت‌های اولیه و سلامت شهری)</span>
-        <span class="tag">Hospital Cost-Benefit Analysis (تحلیل هزینه-فایده بیمارستانی)</span>
-        <span class="tag">Health Policy Analysis (تحلیل خط‌مشی سلامت)</span>
-        <span class="tag">Hospital & Emergency Resilience (تاب‌آوری بیمارستانی و اورژانس)</span>
-        <span class="tag">Healthcare Operations & Quality (مدیریت عملیات و کیفیت سلامت)</span>
-        <span class="tag">Health Technology & AI Governance (حکمرانی هوش مصنوعی و فناوری سلامت)</span>
-      </div>
-    </section>
+  <section class="interests">
+    <h2>Research Interests | علایق پژوهشی</h2>
+    <div class="tags">
+      <span class="tag"><span class="en">Health Data Governance</span><span class="fa">حکمرانی داده‌های سلامت</span></span>
+      <span class="tag"><span class="en">Hospital Financial Management</span><span class="fa">مدیریت مالی بیمارستانی</span></span>
+      <span class="tag"><span class="en">Structural Equation Modeling &amp; R</span><span class="fa">مدلسازی معادلات ساختاری</span></span>
+      <span class="tag"><span class="en">Digital Health &amp; Health Information Systems</span><span class="fa">سلامت دیجیتال و سیستم‌های اطلاعات سلامت</span></span>
+      <span class="tag"><span class="en">Urban Primary Healthcare</span><span class="fa">مراقبت‌های اولیه و سلامت شهری</span></span>
+      <span class="tag"><span class="en">Hospital Cost-Benefit Analysis</span><span class="fa">تحلیل هزینه-فایده بیمارستانی</span></span>
+      <span class="tag"><span class="en">Health Policy Analysis</span><span class="fa">تحلیل خط‌مشی سلامت</span></span>
+      <span class="tag"><span class="en">Hospital &amp; Emergency Resilience</span><span class="fa">تاب‌آوری بیمارستانی و اورژانس</span></span>
+      <span class="tag"><span class="en">Healthcare Operations &amp; Quality</span><span class="fa">مدیریت عملیات و کیفیت سلامت</span></span>
+      <span class="tag"><span class="en">Health Technology &amp; AI Governance</span><span class="fa">حکمرانی هوش مصنوعی و فناوری سلامت</span></span>
+    </div>
+  </section>
     
     <!-- Academic Profiles with target="_blank" (کارت‌های شیک و پرستیژ بین‌المللی) -->
     <section class="py-8">
