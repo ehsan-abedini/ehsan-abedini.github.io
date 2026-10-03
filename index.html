@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dr. Ehsan Abedini | دکتر احسان عابدینی</title>
-    <!-- Social Media & Open Graph Metadata -->
+  
+  <!-- Social Media & Open Graph Metadata -->
   <meta property="og:type" content="profile">
   <meta property="og:title" content="Dr. Ehsan Abedini | دکتر احسان عابدینی">
   <meta property="og:description" content="Researcher in Health Management and Policy at Mazandaran University of Medical Sciences. Academic Editor for PLOS ONE and Medical Science.">
@@ -21,7 +22,7 @@
   <meta name="author" content="Dr. Ehsan Abedini | دکتر احسان عابدینی">
   <link rel="canonical" href="https://ehsan-abedini.github.io/">
 
-  <!-- Favicon (تب مرورگر) -->
+  <!-- Favicon -->
   <link rel="icon" type="image/jpeg" href="drea.jpg">
   <link rel="apple-touch-icon" href="drea.jpg">
 
@@ -70,181 +71,181 @@
     ]
   }
   </script>
-<style>
+
+  <style>
     /* --- 1. Sticky Header & Glassmorphism Effect --- */
-  /* --- هدر در حالت پیش‌فرض (انیمیشن نرم) --- */
-  header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: rgba(255, 255, 255, 0.88);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(226, 232, 240, 0.8);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  header .avatar {
-    transition: all 0.3s ease;
-  }
-
-  /* --- 2. Scroll Progress Bar --- */
-  .scroll-progress-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: transparent;
-    z-index: 1001;
-  }
-  .scroll-progress-bar {
-    height: 100%;
-    background: linear-gradient(90deg, #2563eb, #3b82f6);
-    width: 0%;
-    transition: width 0.1s ease-out;
-  }
-
-  /* --- 3. Return to Top Button with Avatar --- */
-  .back-to-top {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-    background: #ffffff;
-    border: 2px solid #2563eb;
-    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(15px);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 999;
-    padding: 2px;
-    overflow: hidden;
-  }
-  .back-to-top.visible {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-  }
-  .back-to-top:hover {
-    transform: translateY(-4px) scale(1.05);
-    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35);
-    border-color: #1d4ed8;
-  }
-  .back-to-top img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-  }
-
-  .interests {
-    margin: 32px 0;
-  }
-  .tags {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px 14px;
-  }
-  @media (max-width: 600px) {
-    .tags { grid-template-columns: 1fr; }
-  }
-  .tag {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    background: #f8fafc;
-    padding: 10px 14px;
-    border-radius: 10px;
-    border: 1px solid #e2e8f0;
-    transition: all .2s ease;
-  }
-  .tag:hover {
-    border-color: #94a3b8;
-    background: #ffffff;
-    box-shadow: 0 2px 8px rgba(0,0,0,.06);
-  }
-  .tag .en {
-    font-weight: 600;
-    color: #1e293b;
-    font-size: 0.92rem;
-    line-height: 1.4;
-  }
-  .tag .fa {
-    color: #64748b;
-    font-size: 0.8rem;
-    line-height: 1.6;
-  }
-  /* --- فقط در موبایل و فقط هنگام اسکرول به پایین --- */
-  @media (max-width: 600px) {
-    /* وقتی اسکرول شد، پدینگ هدر فشرده شود */
-    header.header-scrolled {
-      padding: 6px 14px !important;
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    /* تغییر چیدمان به حالت افقی با اولویت سمت راست */
-    header.header-scrolled {
-      display: flex !important;
-      flex-direction: row-reverse !important; /* عکس می‌رود منتهی‌الیه سمت راست */
-      align-items: center !important;
-      justify-content: flex-end !important;
-      gap: 12px !important;
-      text-align: right !important;
+    #headerImg {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    /* عکس نصف شود و در راست قفل شود */
-    header.header-scrolled .avatar,
-    header.header-scrolled img {
-      width: 44px !important;
-      height: 44px !important;
-      min-width: 44px !important;
-      border-width: 1.5px !important;
-      margin: 0 !important;
+    /* --- 2. Scroll Progress Bar --- */
+    .scroll-progress-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: transparent;
+      z-index: 1001;
+    }
+    .scroll-progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, #2563eb, #3b82f6);
+      width: 0%;
+      transition: width 0.1s ease-out;
     }
 
-    /* متن‌ها بالا کشیده شوند و فشرده شوند */
-    header.header-scrolled h1 {
-      font-size: 1.05rem !important;
-      margin: 0 !important;
-      line-height: 1.2 !important;
+    /* --- 3. Return to Top Button with Avatar --- */
+    .back-to-top {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 2px solid #2563eb;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(15px);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 999;
+      padding: 2px;
+      overflow: hidden;
+    }
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .back-to-top:hover {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35);
+      border-color: #1d4ed8;
+    }
+    .back-to-top img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
     }
 
-    header.header-scrolled p,
-    header.header-scrolled .subtitle {
-      font-size: 0.72rem !important;
-      margin: 2px 0 0 0 !important;
-      line-height: 1.2 !important;
+    /* --- علایق پژوهشی --- */
+    .interests {
+      margin: 32px 0;
     }
-  }
-</style>
+    .tags {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px 14px;
+    }
+    @media (max-width: 600px) {
+      .tags { grid-template-columns: 1fr; }
+    }
+    .tag {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      background: #f8fafc;
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1px solid #e2e8f0;
+      transition: all .2s ease;
+    }
+    .tag:hover {
+      border-color: #94a3b8;
+      background: #ffffff;
+      box-shadow: 0 2px 8px rgba(0,0,0,.06);
+    }
+    .tag .en {
+      font-weight: 600;
+      color: #1e293b;
+      font-size: 0.92rem;
+      line-height: 1.4;
+    }
+    .tag .fa {
+      color: #64748b;
+      font-size: 0.8rem;
+      line-height: 1.6;
+    }
+
+    /* --- جادوی فشرده‌سازی در موبایل با اسکرول --- */
+    @media (max-width: 640px) {
+      header.header-scrolled {
+        padding-top: 8px !important;
+        padding-bottom: 8px !important;
+        flex-direction: row-reverse !important; /* آواتار سمت راست و متن سمت چپ */
+        justify-content: flex-end !important;
+        text-align: right !important;
+        gap: 12px !important;
+      }
+
+      /* کاهش آواتار به نصف سایز و بردن به راست */
+      header.header-scrolled #headerImg {
+        width: 48px !important;
+        height: 48px !important;
+      }
+
+      /* مخفی کردن تگ‌های فرعی و فشرده‌سازی متن‌ها در حالت اسکرول */
+      header.header-scrolled .header-badges,
+      header.header-scrolled .header-affiliation {
+        display: none !important;
+      }
+
+      header.header-scrolled h1 {
+        font-size: 1.05rem !important;
+        line-height: 1.2 !important;
+      }
+
+      header.header-scrolled h2 {
+        font-size: 0.85rem !important;
+        margin-top: 0 !important;
+      }
+
+      header.header-scrolled p.header-role {
+        font-size: 0.72rem !important;
+        margin-top: 0 !important;
+      }
+    }
+  </style>
 </head>
   
 <body class="bg-slate-50 text-slate-800 font-sans antialiased">
-    <!-- Scroll Progress Bar Container -->
+
+  <!-- Scroll Progress Bar Container -->
   <div class="scroll-progress-container">
     <div class="scroll-progress-bar" id="progressBar"></div>
   </div>
 
-  <main class="max-w-3xl mx-auto px-6 py-16">
-    <header class="border-b border-slate-200 pb-8 flex flex-col md:flex-row items-center gap-8 text-center md:text-left">
+  <main class="max-w-3xl mx-auto px-6 py-6 sm:py-12">
+    <!-- Header -->
+    <header id="mainHeader" class="border-b border-slate-200 pb-6 pt-4 flex flex-col md:flex-row items-center gap-6 sm:gap-8 text-center md:text-left">
       <!-- Profile Image -->
       <div class="flex-shrink-0">
-        <img src="drea.jpg" alt="Dr. Ehsan Abedini - دکتر احسان عابدینی" class="w-32 h-32 rounded-full object-cover shadow-lg border-2 border-white ring-2 ring-indigo-100">
+        <img id="headerImg" src="drea.jpg" alt="Dr. Ehsan Abedini - دکتر احسان عابدینی" class="w-32 h-32 rounded-full object-cover shadow-lg border-2 border-white ring-2 ring-indigo-100">
       </div>
       
-      <div>
+      <div class="header-info flex-1">
         <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Dr. Ehsan Abedini</h1>
         <h2 class="text-lg text-slate-700 font-semibold mt-1">دکتر احسان عابدینی</h2>
-        <p class="text-md text-indigo-600 font-medium mt-1">PhD in Health Management & Policy</p>
-        <p class="text-slate-600 text-sm">Mazandaran University of Medical Sciences (MAZUMS) | دانشگاه علوم پزشکی مازندران</p>
-        <div class="mt-4 flex flex-wrap gap-2 justify-center md:justify-start">
+        <p class="header-role text-md text-indigo-600 font-medium mt-1">PhD in Health Management & Policy</p>
+        <p class="header-affiliation text-slate-600 text-sm">Mazandaran University of Medical Sciences (MAZUMS) | دانشگاه علوم پزشکی مازندران</p>
+        <div class="header-badges mt-4 flex flex-wrap gap-2 justify-center md:justify-start">
           <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-200">Academic Editor @ PLOS ONE & Medical Science</span>
           <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">SEM & Statistical Analysis</span>
         </div>
@@ -255,35 +256,36 @@
     <section class="py-6 border-b border-slate-200 text-justify leading-relaxed">
       <h2 class="text-xl font-bold text-slate-900 mb-3 text-left">About</h2>
       <p class="text-slate-700">
-      <p>Researcher in Health Management and Policy at the Health Sciences Research Center, Mazandaran University of Medical Sciences. Focus areas include health data governance, hospital financial management, urban primary healthcare, and advanced statistical computing with SEM & R. Serving as an Academic Editor for <em>PLOS ONE</em> and <em>Medical Science</em>.
+        Researcher in Health Management and Policy at the Health Sciences Research Center, Mazandaran University of Medical Sciences. Focus areas include health data governance, hospital financial management, urban primary healthcare, and advanced statistical computing with SEM & R. Serving as an Academic Editor for <em>PLOS ONE</em> and <em>Medical Science</em>.
       </p>
     </section>
 
-    <!-- Persian About (سیگنال قدرتمند سئو برای موتور جستجوی فارسی) -->
+    <!-- Persian About -->
     <section class="py-6 border-b border-slate-200 text-justify leading-relaxed" dir="rtl">
       <h2 class="text-xl font-bold text-slate-900 mb-3 text-right">درباره</h2>
       <p class="text-slate-700">
-      <p><strong>دکتر احسان عابدینی</strong>، پژوهشگر مدیریت خدمات بهداشتی و درمانی در مرکز تحقیقات علوم بهداشتی دانشگاه علوم پزشکی مازندران. حوزه‌های پژوهشی شامل حکمرانی داده‌های سلامت، مدیریت مالی و هزینه-فایده بیمارستانی، مراقبت‌های اولیه و سلامت شهری، و مدلسازی معادلات ساختاری (SEM). ادیتور آکادمیک مجلات بین‌المللی <em>PLOS ONE</em> و <em>Medical Science</em>.
+        <strong>دکتر احسان عابدینی</strong>، پژوهشگر مدیریت خدمات بهداشتی و درمانی در مرکز تحقیقات علوم بهداشتی دانشگاه علوم پزشکی مازندران. حوزه‌های پژوهشی شامل حکمرانی داده‌های سلامت، مدیریت مالی و هزینه-فایده بیمارستانی، مراقبت‌های اولیه و سلامت شهری، و مدلسازی معادلات ساختاری (SEM). ادیتور آکادمیک مجلات بین‌المللی <em>PLOS ONE</em> و <em>Medical Science</em>.
       </p>
     </section>
 
-  <section class="interests">
-    <h2>Research Interests | علایق پژوهشی</h2>
-    <div class="tags">
-      <span class="tag"><span class="en">Health Data Governance</span><span class="fa">حکمرانی داده‌های سلامت</span></span>
-      <span class="tag"><span class="en">Hospital Financial Management</span><span class="fa">مدیریت مالی بیمارستانی</span></span>
-      <span class="tag"><span class="en">Structural Equation Modeling &amp; R</span><span class="fa">مدلسازی معادلات ساختاری</span></span>
-      <span class="tag"><span class="en">Digital Health &amp; Health Information Systems</span><span class="fa">سلامت دیجیتال و سیستم‌های اطلاعات سلامت</span></span>
-      <span class="tag"><span class="en">Urban Primary Healthcare</span><span class="fa">مراقبت‌های اولیه و سلامت شهری</span></span>
-      <span class="tag"><span class="en">Hospital Cost-Benefit Analysis</span><span class="fa">تحلیل هزینه-فایده بیمارستانی</span></span>
-      <span class="tag"><span class="en">Health Policy Analysis</span><span class="fa">تحلیل خط‌مشی سلامت</span></span>
-      <span class="tag"><span class="en">Hospital &amp; Emergency Resilience</span><span class="fa">تاب‌آوری بیمارستانی و اورژانس</span></span>
-      <span class="tag"><span class="en">Healthcare Operations &amp; Quality</span><span class="fa">مدیریت عملیات و کیفیت سلامت</span></span>
-      <span class="tag"><span class="en">Health Technology &amp; AI Governance</span><span class="fa">حکمرانی هوش مصنوعی و فناوری سلامت</span></span>
-    </div>
-  </section>
+    <!-- علایق پژوهشی -->
+    <section class="interests">
+      <h2 class="text-xl font-bold text-slate-900 mb-4">Research Interests | علایق پژوهشی</h2>
+      <div class="tags">
+        <span class="tag"><span class="en">Health Data Governance</span><span class="fa">حکمرانی داده‌های سلامت</span></span>
+        <span class="tag"><span class="en">Hospital Financial Management</span><span class="fa">مدیریت مالی بیمارستانی</span></span>
+        <span class="tag"><span class="en">Structural Equation Modeling &amp; R</span><span class="fa">مدلسازی معادلات ساختاری</span></span>
+        <span class="tag"><span class="en">Digital Health &amp; Health Information Systems</span><span class="fa">سلامت دیجیتال و سیستم‌های اطلاعات سلامت</span></span>
+        <span class="tag"><span class="en">Urban Primary Healthcare</span><span class="fa">مراقبت‌های اولیه و سلامت شهری</span></span>
+        <span class="tag"><span class="en">Hospital Cost-Benefit Analysis</span><span class="fa">تحلیل هزینه-فایده بیمارستانی</span></span>
+        <span class="tag"><span class="en">Health Policy Analysis</span><span class="fa">تحلیل خط‌مشی سلامت</span></span>
+        <span class="tag"><span class="en">Hospital &amp; Emergency Resilience</span><span class="fa">تاب‌آوری بیمارستانی و اورژانس</span></span>
+        <span class="tag"><span class="en">Healthcare Operations &amp; Quality</span><span class="fa">مدیریت عملیات و کیفیت سلامت</span></span>
+        <span class="tag"><span class="en">Health Technology &amp; AI Governance</span><span class="fa">حکمرانی هوش مصنوعی و فناوری سلامت</span></span>
+      </div>
+    </section>
     
-    <!-- Academic Profiles with target="_blank" (کارت‌های شیک و پرستیژ بین‌المللی) -->
+    <!-- Academic Profiles -->
     <section class="py-8">
       <h2 class="text-xl font-bold text-slate-900 mb-4">Academic Profiles</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -306,17 +308,21 @@
       </div>
     </section>
 
+    <!-- Footer -->
     <footer class="pt-8 border-t border-slate-200 text-xs text-slate-400 flex flex-col sm:flex-row justify-between items-center gap-2">
       <p>© Dr. Ehsan Abedini — دانشگاه علوم پزشکی مازندران</p>
       <p>Hosted on GitHub Pages</p>
     </footer>
   </main>
+
   <!-- Back to Top Button -->
   <button id="backToTop" class="back-to-top" aria-label="Return to top" title="بازگشت به بالای صفحه">
     <img src="drea.jpg" alt="Dr. Ehsan Abedini">
   </button>
+
+  <!-- Clean, Error-Free JavaScript -->
   <script>
-    // Scroll Progress Bar & Back to Top Controller
+    const header = document.getElementById('mainHeader');
     const progressBar = document.getElementById('progressBar');
     const backToTopBtn = document.getElementById('backToTop');
 
@@ -324,34 +330,40 @@
       const scrollTop = window.scrollY || document.documentElement.scrollTop;
       const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
       
-      // Calculate scroll percentage
-      const progressPercent = (scrollTop / scrollHeight) * 100;
-      if (progressBar) {
+      // ۱. نوار پیشرفت اسکرول
+      if (progressBar && scrollHeight > 0) {
+        const progressPercent = (scrollTop / scrollHeight) * 100;
         progressBar.style.width = progressPercent + '%';
       }
 
-      // Show/Hide Back to Top button
-      if (scrollTop > 250) {
-        backToTopBtn.classList.add('visible');
-      } else {
-        backToTopBtn.classList.remove('visible');
+      // ۲. دکمه بازگشت به بالا
+      if (backToTopBtn) {
+        if (scrollTop > 250) {
+          backToTopBtn.classList.add('visible');
+        } else {
+          backToTopBtn.classList.remove('visible');
+        }
+      }
+
+      // ۳. کنترل فشرده‌سازی هدر در موبایل بر اساس اسکرول
+      if (header) {
+        if (scrollTop > 50) {
+          header.classList.add('header-scrolled');
+        } else {
+          header.classList.remove('header-scrolled');
+        }
       }
     });
 
-    // Smooth scroll to top on click
-    backToTopBtn.addEventListener('click', () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+    // بازگشت نرم به بالا
+    if (backToTopBtn) {
+      backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
       });
-    });
-        // کنترل فشرده‌سازی هدر در موبایل بر اساس اسکرول
-    if (currentScrollY > 50) {
-      header.classList.add('header-scrolled');
-    } else {
-      header.classList.remove('header-scrolled');
     }
-
   </script>
 
 </body>
