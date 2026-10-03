@@ -72,14 +72,19 @@
   </script>
 <style>
     /* --- 1. Sticky Header & Glassmorphism Effect --- */
+  /* --- هدر در حالت پیش‌فرض (انیمیشن نرم) --- */
   header {
     position: sticky;
     top: 0;
     z-index: 1000;
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  header .avatar {
     transition: all 0.3s ease;
   }
 
@@ -177,46 +182,45 @@
     font-size: 0.8rem;
     line-height: 1.6;
   }
-    /* --- Mobile-Only Compact Header Optimization --- */
+  /* --- فقط در موبایل و فقط هنگام اسکرول به پایین --- */
   @media (max-width: 600px) {
-    header {
-      padding: 8px 14px !important;
-      position: sticky;
-      top: 0;
+    /* وقتی اسکرول شد، پدینگ هدر فشرده شود */
+    header.header-scrolled {
+      padding: 6px 14px !important;
     }
 
-    /* هدر را به صورت افقی و متراکم درمی‌آورد */
-    header .header-content,
-    header > div:first-child {
+    /* تغییر چیدمان به حالت افقی با اولویت سمت راست */
+    header.header-scrolled {
       display: flex !important;
-      flex-direction: row-reverse !important; /* آواتار را به منتهی‌الیه سمت راست می‌برد */
+      flex-direction: row-reverse !important; /* عکس می‌رود منتهی‌الیه سمت راست */
       align-items: center !important;
+      justify-content: flex-end !important;
       gap: 12px !important;
       text-align: right !important;
     }
 
-    /* کاهش اندازه آواتار به ۱/۲ سایز اصلی و تثبیت در راست */
-    header img.avatar,
-    header img {
-      width: 48px !important;
-      height: 48px !important;
-      min-width: 48px !important;
+    /* عکس نصف شود و در راست قفل شود */
+    header.header-scrolled .avatar,
+    header.header-scrolled img {
+      width: 44px !important;
+      height: 44px !important;
+      min-width: 44px !important;
       border-width: 1.5px !important;
       margin: 0 !important;
     }
 
-    /* فشرده‌سازی متن‌ها و عناوین برای حذف فضای خالی اضافه */
-    header h1 {
+    /* متن‌ها بالا کشیده شوند و فشرده شوند */
+    header.header-scrolled h1 {
       font-size: 1.05rem !important;
-      margin: 0 0 2px 0 !important;
+      margin: 0 !important;
       line-height: 1.2 !important;
     }
 
-    header p, 
-    header .subtitle {
-      font-size: 0.75rem !important;
-      margin: 0 !important;
-      line-height: 1.3 !important;
+    header.header-scrolled p,
+    header.header-scrolled .subtitle {
+      font-size: 0.72rem !important;
+      margin: 2px 0 0 0 !important;
+      line-height: 1.2 !important;
     }
   }
 </style>
@@ -341,6 +345,13 @@
         behavior: 'smooth'
       });
     });
+        // کنترل فشرده‌سازی هدر در موبایل بر اساس اسکرول
+    if (currentScrollY > 50) {
+      header.classList.add('header-scrolled');
+    } else {
+      header.classList.remove('header-scrolled');
+    }
+
   </script>
 
 </body>
