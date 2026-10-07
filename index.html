@@ -74,15 +74,31 @@
 
   <style>
     /* --- 1. Sticky Header Animation & Compact State --- */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(12px);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
+  header {
+  position: sticky;
+  top: 12px; /* کمی فاصله از سقف برای جلوه شناور و زیباتر شدن گوشه‌های گرد */
+  z-index: 1000;
+  
+  /* ۱. شفافیت شیشه‌ای کنترل‌شده (قبلاً 0.95 بود که بیش از حد کدر بود) */
+  background: rgba(255, 255, 255, 0.65); 
+  
+  /* ۲. افکت شیشه مات (Frosted Glass) با هماهنگی کامل سافاری و کروم */
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  
+  /* ۳. گرد کردن گوشه‌ها (کپسولی و ارگونومیک) */
+  border-radius: 20px; /* یا 9999px برای فرم کاملاً بیضی/کپسولی */
+  
+  /* ۴. حاشیه نوری و سایه فوق‌العاده نرم برای تفکیک تمیز از محتوای زیرین */
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.06);
+  
+  /* ۵. فاصله‌گذاری هدر از طرفین برای نمای کپسولی شناور */
+  margin: 0 16px; 
+  
+  /* انیمیشن نرم */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
     #headerImg {
       transition: width 0.3s ease, height 0.3s ease;
