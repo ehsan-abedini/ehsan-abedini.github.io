@@ -73,19 +73,70 @@
   </script>
 
   <style>
-    /* --- 1. Sticky Header & Glassmorphism --- */
+    /* --- 1. Sticky Header Animation & Compact State --- */
     header {
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(255, 255, 255, 0.94);
+      background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      transition: padding 0.3s ease, box-shadow 0.3s ease;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     #headerImg {
       transition: width 0.3s ease, height 0.3s ease;
+    }
+
+    #headerTitle, #headerSub, #headerAffil {
+      transition: all 0.3s ease;
+    }
+
+    /* حالت فشرده در اسکرول (Scrolled State) مخصوصاً در موبایل */
+    header.is-scrolled {
+      padding-top: 0.5rem !important;
+      padding-bottom: 0.5rem !important;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    @media (max-width: 767px) {
+      /* در حالت اسکرول در موبایل: آواتار می‌رود سمت راست و متن‌ها سمت چپ */
+      header.is-scrolled {
+        flex-direction: row-reverse !important;
+        text-align: right !important;
+        justify-content: flex-end !important;
+        gap: 14px !important;
+      }
+      
+      header.is-scrolled #headerImg {
+        width: 56px !important;   /* کاهش سایز به کمتر از نصف */
+        height: 56px !important;
+      }
+
+      header.is-scrolled #headerTitle {
+        font-size: 1.15rem !important; /* کوچک شدن سایز نام */
+        line-height: 1.3 !important;
+      }
+
+      header.is-scrolled #headerSub {
+        font-size: 0.85rem !important;
+      }
+
+      header.is-scrolled #headerAffil,
+      header.is-scrolled #headerBadges {
+        display: none !important; /* مخفی‌سازی متن‌های طولانی برای جلوگیری از شلوغی هدر موبایل */
+      }
+    }
+
+    /* حالت اسکرول در دسکتاپ */
+    @media (min-width: 768px) {
+      header.is-scrolled #headerImg {
+        width: 68px !important;
+        height: 68px !important;
+      }
+      header.is-scrolled #headerTitle {
+        font-size: 1.6rem !important;
+      }
     }
 
     /* --- 2. Scroll Progress Bar --- */
@@ -204,11 +255,13 @@
       </div>
       
       <div class="header-info flex-1">
-        <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Dr. Ehsan Abedini</h1>
-        <h2 class="text-lg text-slate-700 font-semibold mt-1">دکتر احسان عابدینی</h2>
-        <p class="text-md text-indigo-600 font-medium mt-1">PhD in Health Management & Policy</p>
-        <p class="text-slate-600 text-sm mt-1">Mazandaran University of Medical Sciences (MAZUMS) | دانشگاه علوم پزشکی مازندران</p>
-        <div class="mt-4 flex flex-wrap gap-2 justify-center md:justify-start">
+        <h1 id="headerTitle" class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Dr. Ehsan Abedini</h1>
+        <h2 id="headerSub" class="text-lg text-slate-700 font-semibold mt-1">دکتر احسان عابدینی</h2>
+        <div id="headerAffil">
+          <p class="text-md text-indigo-600 font-medium mt-1">PhD in Health Management & Policy</p>
+          <p class="text-slate-600 text-sm mt-1">Mazandaran University of Medical Sciences (MAZUMS) | دانشگاه علوم پزشکی مازندران</p>
+        </div>
+        <div id="headerBadges" class="mt-4 flex flex-wrap gap-2 justify-center md:justify-start">
           <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-200">Academic Editor @ PLOS ONE & Medical Science</span>
           <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">SEM & Statistical Analysis</span>
         </div>
@@ -289,17 +342,30 @@
     const progressBar = document.getElementById('progressBar');
     const backToTopBtn = document.getElementById('backToTop');
 
+    let isScrolled = false;
+
     window.addEventListener('scroll', () => {
       const scrollTop = window.scrollY || document.documentElement.scrollTop;
       const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
       
-      // ۱. نوار پیشرفت
+      // ۱. محاسبه نوار پیشرفت مطالعه
       if (progressBar && scrollHeight > 0) {
         const progressPercent = (scrollTop / scrollHeight) * 100;
         progressBar.style.width = progressPercent + '%';
       }
 
-      // ۲. دکمه بازگشت به بالا
+      // ۲. وضعیت هدر در اسکرول (انتقال آواتار به سمت راست و کوچک‌سازی به ۱/۲)
+      if (header) {
+        if (scrollTop > 45 && !isScrolled) {
+          header.classList.add('is-scrolled');
+          isScrolled = true;
+        } else if (scrollTop <= 45 && isScrolled) {
+          header.classList.remove('is-scrolled');
+          isScrolled = false;
+        }
+      }
+
+      // ۳. نمایش دکمه گرد بازگشت به بالا
       if (backToTopBtn) {
         if (scrollTop > 200) {
           backToTopBtn.classList.add('visible');
@@ -307,16 +373,7 @@
           backToTopBtn.classList.remove('visible');
         }
       }
-
-      // ۳. شادو ملایم هدر هنگام اسکرول
-      if (header) {
-        if (scrollTop > 20) {
-          header.classList.add('shadow-sm');
-        } else {
-          header.classList.remove('shadow-sm');
-        }
-      }
-    });
+    }, { passive: true });
 
     if (backToTopBtn) {
       backToTopBtn.addEventListener('click', () => {
