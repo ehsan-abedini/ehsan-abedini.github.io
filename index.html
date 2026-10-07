@@ -81,11 +81,11 @@
       background: rgba(255, 255, 255, 0.92);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
     }
 
     #headerImg {
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
     }
 
     /* --- 2. Scroll Progress Bar --- */
@@ -184,27 +184,42 @@
       line-height: 1.6;
     }
 
-    /* --- جادوی فشرده‌سازی در موبایل با اسکرول --- */
+    /* --- ترنزیشن نرم عمومی برای تمام اجزای متحرک هدر --- */
+    header,
+    #headerImg,
+    .header-badges,
+    .header-affiliation {
+      transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    /* --- بهینه‌سازی بدون پرش در موبایل هنگام اسکرول --- */
     @media (max-width: 640px) {
+      /* هدر در حالت اسکرول */
       header.header-scrolled {
         padding-top: 8px !important;
         padding-bottom: 8px !important;
-        flex-direction: row-reverse !important; /* آواتار سمت راست و متن سمت چپ */
+        flex-direction: row-reverse !important;
         justify-content: flex-end !important;
         text-align: right !important;
         gap: 12px !important;
       }
 
-      /* کاهش آواتار به نصف سایز و بردن به راست */
+      /* آواتار به نرمی نصف می‌شود */
       header.header-scrolled #headerImg {
         width: 48px !important;
         height: 48px !important;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.08) !important;
       }
 
-      /* مخفی کردن تگ‌های فرعی و فشرده‌سازی متن‌ها در حالت اسکرول */
+      /* محو شدن نرم المان‌های اضافی به جای پرش ناگهانی */
       header.header-scrolled .header-badges,
       header.header-scrolled .header-affiliation {
-        display: none !important;
+        opacity: 0 !important;
+        max-height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: hidden !important;
+        pointer-events: none;
       }
 
       header.header-scrolled h1 {
@@ -214,14 +229,15 @@
 
       header.header-scrolled h2 {
         font-size: 0.85rem !important;
-        margin-top: 0 !important;
+        margin-top: 1px !important;
       }
 
       header.header-scrolled p.header-role {
         font-size: 0.72rem !important;
-        margin-top: 0 !important;
+        margin-top: 1px !important;
       }
     }
+
   </style>
 </head>
   
@@ -345,11 +361,11 @@
         }
       }
 
-      // ۳. کنترل فشرده‌سازی هدر در موبایل بر اساس اسکرول
+      // ۳. کنترل فشرده‌سازی هدر با آستانه پایدار (جلوگیری از لرزش و پرش)
       if (header) {
-        if (scrollTop > 50) {
+        if (scrollTop > 70) {
           header.classList.add('header-scrolled');
-        } else {
+        } else if (scrollTop < 40) {
           header.classList.remove('header-scrolled');
         }
       }
