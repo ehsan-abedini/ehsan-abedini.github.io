@@ -73,104 +73,124 @@
   </script>
 
   <style>
-    /* --- 1. Sticky Header & Glassmorphism Effect --- */
+    /* --- 1. Sticky Header & Glassmorphism --- */
     header {
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(255, 255, 255, 0.95);
+      background: rgba(255, 255, 255, 0.94);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      transition: padding 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
-      will-change: padding;
+      transition: padding 0.3s ease, box-shadow 0.3s ease;
     }
 
-    /* ترنزیشن نرم برای اجزای عکس و نوشته */
     #headerImg {
-      transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
-                  height 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-                  margin 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: width, height;
+      transition: width 0.3s ease, height 0.3s ease;
     }
 
-    .header-info {
-      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    /* --- 2. Scroll Progress Bar --- */
+    .scroll-progress-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: transparent;
+      z-index: 1001;
+    }
+    .scroll-progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, #2563eb, #3b82f6);
+      width: 0%;
+      transition: width 0.1s linear;
     }
 
-    .header-badges, .header-affiliation {
-      transition: opacity 0.25s ease, max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1), margin 0.35s ease;
+    /* --- 3. Return to Top Button with Avatar --- */
+    .back-to-top {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 2px solid #2563eb;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(15px);
+      transition: all 0.3s ease;
+      z-index: 999;
+      padding: 0;
       overflow: hidden;
     }
-
-    /* --- بهینه‌سازی دقیق موبایل: حفظ پرتره اولیه و فشرده‌سازی بی‌نقص --- */
-    @media (max-width: 640px) {
-      /* در حالت اولیه (لحظه صفر): عکس کاملاً بالا، بزرگ، وسط و متن زیر آن */
-      header {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        text-align: center !important;
-        padding-top: 1.25rem !important;
-        padding-bottom: 1.25rem !important;
-      }
-
-      #headerImg {
-        width: 100px !important;
-        height: 100px !important;
-        margin-bottom: 0.5rem !important;
-      }
-
-      /* وقتی کاربر اسکرول کرد: به حالت فشرده تبدیل می‌شود */
-      header.header-scrolled {
-        flex-direction: row-reverse !important;
-        justify-content: flex-end !important;
-        align-items: center !important;
-        text-align: right !important;
-        padding-top: 0.45rem !important;
-        padding-bottom: 0.45rem !important;
-        gap: 0.75rem !important;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-      }
-
-      header.header-scrolled #headerImg {
-        width: 44px !important;
-        height: 44px !important;
-        margin-bottom: 0 !important;
-      }
-
-      /* تیترها در حالت فشرده */
-      header.header-scrolled h1 {
-        font-size: 1rem !important;
-        line-height: 1.2 !important;
-      }
-
-      header.header-scrolled h2 {
-        font-size: 0.82rem !important;
-        margin-top: 0 !important;
-      }
-
-      header.header-scrolled .header-role {
-        font-size: 0.72rem !important;
-        margin-top: 0 !important;
-      }
-
-      /* بسته‌شدن و محو شدن خطوط اضافه */
-      header.header-scrolled .header-affiliation,
-      header.header-scrolled .header-badges {
-        opacity: 0 !important;
-        max-height: 0 !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        pointer-events: none;
-      }
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .back-to-top:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 6px 18px rgba(37, 99, 235, 0.35);
+    }
+    .back-to-top img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      display: block;
     }
 
+    /* --- 4. علایق پژوهشی (Research Interests) --- */
+    .interests {
+      margin: 32px 0;
+    }
+    .tags {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px 14px;
+    }
+    @media (max-width: 640px) {
+      .tags { 
+        grid-template-columns: 1fr; 
+      }
+    }
+    .tag {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      background: #f8fafc;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid #e2e8f0;
+      transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .tag:hover {
+      border-color: #94a3b8;
+      background: #ffffff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+    .tag .en {
+      font-weight: 600;
+      color: #1e293b;
+      font-size: 0.92rem;
+      line-height: 1.4;
+    }
+    .tag .fa {
+      color: #64748b;
+      font-size: 0.82rem;
+      line-height: 1.5;
+    }
   </style>
 </head>
   
-<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-indigo-100 selection:text-indigo-900">
 
-  <!-- Scroll Progress Bar Container -->
+  <!-- Scroll Progress Bar -->
   <div class="scroll-progress-container">
     <div class="scroll-progress-bar" id="progressBar"></div>
   </div>
@@ -186,9 +206,9 @@
       <div class="header-info flex-1">
         <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Dr. Ehsan Abedini</h1>
         <h2 class="text-lg text-slate-700 font-semibold mt-1">دکتر احسان عابدینی</h2>
-        <p class="header-role text-md text-indigo-600 font-medium mt-1">PhD in Health Management & Policy</p>
-        <p class="header-affiliation text-slate-600 text-sm">Mazandaran University of Medical Sciences (MAZUMS) | دانشگاه علوم پزشکی مازندران</p>
-        <div class="header-badges mt-4 flex flex-wrap gap-2 justify-center md:justify-start">
+        <p class="text-md text-indigo-600 font-medium mt-1">PhD in Health Management & Policy</p>
+        <p class="text-slate-600 text-sm mt-1">Mazandaran University of Medical Sciences (MAZUMS) | دانشگاه علوم پزشکی مازندران</p>
+        <div class="mt-4 flex flex-wrap gap-2 justify-center md:justify-start">
           <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-200">Academic Editor @ PLOS ONE & Medical Science</span>
           <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">SEM & Statistical Analysis</span>
         </div>
@@ -263,53 +283,41 @@
     <img src="drea.jpg" alt="Dr. Ehsan Abedini">
   </button>
 
-  <!-- Clean, Error-Free JavaScript -->
+  <!-- JavaScript -->
   <script>
     const header = document.getElementById('mainHeader');
     const progressBar = document.getElementById('progressBar');
     const backToTopBtn = document.getElementById('backToTop');
 
-    let ticking = false;
-
     window.addEventListener('scroll', () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          const scrollTop = window.scrollY || document.documentElement.scrollTop;
-          const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-          
-          // ۱. نوار پیشرفت اسکرول
-          if (progressBar && scrollHeight > 0) {
-            const progressPercent = (scrollTop / scrollHeight) * 100;
-            progressBar.style.width = progressPercent + '%';
-          }
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      
+      // ۱. نوار پیشرفت
+      if (progressBar && scrollHeight > 0) {
+        const progressPercent = (scrollTop / scrollHeight) * 100;
+        progressBar.style.width = progressPercent + '%';
+      }
 
-          // ۲. دکمه بازگشت به بالا
-          if (backToTopBtn) {
-            if (scrollTop > 220) {
-              backToTopBtn.classList.add('visible');
-            } else {
-              backToTopBtn.classList.remove('visible');
-            }
-          }
+      // ۲. دکمه بازگشت به بالا
+      if (backToTopBtn) {
+        if (scrollTop > 200) {
+          backToTopBtn.classList.add('visible');
+        } else {
+          backToTopBtn.classList.remove('visible');
+        }
+      }
 
-          // ۳. فشرده‌سازی بسیار سریع و در شروع حرکت (از بین بردن پرش به چشم کاربر)
-          if (header) {
-            if (scrollTop > 35) {
-              header.classList.add('header-scrolled');
-            } else if (scrollTop < 15) {
-              header.classList.remove('header-scrolled');
-            }
-          }
-
-
-          ticking = false;
-        });
-
-        ticking = true;
+      // ۳. شادو ملایم هدر هنگام اسکرول
+      if (header) {
+        if (scrollTop > 20) {
+          header.classList.add('shadow-sm');
+        } else {
+          header.classList.remove('shadow-sm');
+        }
       }
     });
 
-    // بازگشت نرم به بالا
     if (backToTopBtn) {
       backToTopBtn.addEventListener('click', () => {
         window.scrollTo({
