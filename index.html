@@ -81,10 +81,16 @@
       background: rgba(255, 255, 255, 0.92);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+      transition: padding 0.35s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.3s ease;
     }
 
-    #headerImg {
+    /* ترنزیشن نرم برای تمام المان‌های داخلی هدر که تغییر سایز می‌دهند */
+    #headerImg,
+    .header-info h1,
+    .header-info h2,
+    .header-info .header-role,
+    .header-affiliation,
+    .header-badges {
       transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
     }
 
@@ -184,60 +190,66 @@
       line-height: 1.6;
     }
 
-    /* --- ترنزیشن نرم عمومی برای تمام اجزای متحرک هدر --- */
-    header,
-    #headerImg,
-    .header-badges,
-    .header-affiliation {
-      transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
-    }
-
-    /* --- بهینه‌سازی بدون پرش در موبایل هنگام اسکرول --- */
+    /* --- بهینه‌سازی کاملاً روان و بدون پرش در موبایل --- */
     @media (max-width: 640px) {
-      /* هدر در حالت اسکرول */
-      header.header-scrolled {
-        padding-top: 8px !important;
-        padding-bottom: 8px !important;
+      /* در موبایل، هدر از همان ابتدا در حالت افقی تمیز قرار می‌گیرد تا تغییر جهت ناگهانی ندهد */
+      header {
         flex-direction: row-reverse !important;
         justify-content: flex-end !important;
         text-align: right !important;
-        gap: 12px !important;
+        gap: 14px !important;
+        padding-top: 14px !important;
+        padding-bottom: 14px !important;
       }
 
-      /* آواتار به نرمی نصف می‌شود */
+      /* آواتار در حالت عادی موبایل */
+      #headerImg {
+        width: 76px !important;
+        height: 76px !important;
+      }
+
+      /* هدر فشرده شده در اسکرول */
+      header.header-scrolled {
+        padding-top: 6px !important;
+        padding-bottom: 6px !important;
+        gap: 10px !important;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      }
+
+      /* آواتار به نرمی کوچک می‌شود */
       header.header-scrolled #headerImg {
-        width: 48px !important;
-        height: 48px !important;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.08) !important;
+        width: 44px !important;
+        height: 44px !important;
       }
 
-      /* محو شدن نرم المان‌های اضافی به جای پرش ناگهانی */
-      header.header-scrolled .header-badges,
-      header.header-scrolled .header-affiliation {
-        opacity: 0 !important;
-        max-height: 0 !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        overflow: hidden !important;
-        pointer-events: none;
-      }
-
-      header.header-scrolled h1 {
+      /* متن‌ها به آرامی کوچک می‌شوند */
+      header.header-scrolled .header-info h1 {
         font-size: 1.05rem !important;
         line-height: 1.2 !important;
       }
 
-      header.header-scrolled h2 {
-        font-size: 0.85rem !important;
-        margin-top: 1px !important;
+      header.header-scrolled .header-info h2 {
+        font-size: 0.82rem !important;
+        margin-top: 0 !important;
       }
 
-      header.header-scrolled p.header-role {
+      header.header-scrolled .header-info .header-role {
         font-size: 0.72rem !important;
-        margin-top: 1px !important;
+        margin-top: 0 !important;
+      }
+
+      /* بج‌ها و وابستگی بدون شوک و با اسلاید نرم جمع می‌شوند */
+      header.header-scrolled .header-affiliation,
+      header.header-scrolled .header-badges {
+        opacity: 0 !important;
+        max-height: 0 !important;
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+        padding: 0 !important;
+        overflow: hidden !important;
+        pointer-events: none;
       }
     }
-
   </style>
 </head>
   
@@ -342,32 +354,42 @@
     const progressBar = document.getElementById('progressBar');
     const backToTopBtn = document.getElementById('backToTop');
 
+    let ticking = false;
+
     window.addEventListener('scroll', () => {
-      const scrollTop = window.scrollY || document.documentElement.scrollTop;
-      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      
-      // ۱. نوار پیشرفت اسکرول
-      if (progressBar && scrollHeight > 0) {
-        const progressPercent = (scrollTop / scrollHeight) * 100;
-        progressBar.style.width = progressPercent + '%';
-      }
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrollTop = window.scrollY || document.documentElement.scrollTop;
+          const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+          
+          // ۱. نوار پیشرفت اسکرول
+          if (progressBar && scrollHeight > 0) {
+            const progressPercent = (scrollTop / scrollHeight) * 100;
+            progressBar.style.width = progressPercent + '%';
+          }
 
-      // ۲. دکمه بازگشت به بالا
-      if (backToTopBtn) {
-        if (scrollTop > 250) {
-          backToTopBtn.classList.add('visible');
-        } else {
-          backToTopBtn.classList.remove('visible');
-        }
-      }
+          // ۲. دکمه بازگشت به بالا
+          if (backToTopBtn) {
+            if (scrollTop > 220) {
+              backToTopBtn.classList.add('visible');
+            } else {
+              backToTopBtn.classList.remove('visible');
+            }
+          }
 
-      // ۳. کنترل فشرده‌سازی هدر با آستانه پایدار (جلوگیری از لرزش و پرش)
-      if (header) {
-        if (scrollTop > 70) {
-          header.classList.add('header-scrolled');
-        } else if (scrollTop < 40) {
-          header.classList.remove('header-scrolled');
-        }
+          // ۳. فشرده‌سازی هدر با بافر پایدار (Hysteresis) بدون کوچک‌ترین لرزش
+          if (header) {
+            if (scrollTop > 65) {
+              header.classList.add('header-scrolled');
+            } else if (scrollTop < 30) {
+              header.classList.remove('header-scrolled');
+            }
+          }
+
+          ticking = false;
+        });
+
+        ticking = true;
       }
     });
 
