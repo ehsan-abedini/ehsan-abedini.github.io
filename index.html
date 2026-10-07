@@ -81,8 +81,7 @@
       width: 100%;
       box-sizing: border-box;
       
-      /* جلوه Glassmorphism پیشرفته و شفافیت متناسب */
-      background: rgba(255, 255, 255, 0.78);
+      background: rgba(255, 255, 255, 0.82);
       backdrop-filter: blur(16px) saturate(160%);
       -webkit-backdrop-filter: blur(16px) saturate(160%);
       
@@ -90,52 +89,49 @@
       border: 1px solid rgba(226, 232, 240, 0.8);
       box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
       
-      /* پدینگ اولیه استاندارد برای فاصله تنفس آواتار */
-      padding: 1.5rem 1.5rem;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      padding: 1.5rem;
+      transition: padding 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                  background-color 0.3s ease, 
+                  box-shadow 0.3s ease;
     }
 
-     /* آواتار: به‌جای تغییر width/height (Reflow)، از transform (Composite) استفاده کنید */
-     #headerImg {
-      transform-origin: center;
-      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      width: 112px;
-      height: 112px;
+    /* کانتینر آواتار با انیمیشن تر و تمیز */
+    .avatar-wrapper {
+      width: 104px;
+      height: 104px;
+      transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                  height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    header#mainHeader.is-scrolled #headerImg {
-     transform: scale(0.42);  /* معادل ۵۰px بدون هیچ Reflow ای */
-    }
-    header#mainHeader .flex-shrink-0 {
-    transition: width 0.3s ease, height 0.3s ease;
-    overflow: visible;
-    }
-    header#mainHeader.is-scrolled .flex-shrink-0 {
-    width: 50px;
-    height: 50px;
+
+    #headerImg {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     #headerTitle, #headerSub {
-      transition: all 0.25s ease;
+      transition: font-size 0.25s ease;
     }
 
-  #headerAffil, #headerBadges {
-  transition: opacity 0.25s ease, max-height 0.3s ease, margin 0.3s ease;
-  max-height: 200px;
-  opacity: 1;
-  overflow: hidden;
-}
+    /* بخش‌های محوشونده هدر بدون پرش ارتفاع */
+    #headerAffil, #headerBadges {
+      transition: opacity 0.2s ease, max-height 0.25s ease, margin 0.25s ease;
+      max-height: 160px;
+      opacity: 1;
+      overflow: hidden;
+    }
 
-    /* حالت فشرده در اسکرول (Scrolled Floating State) */
+    /* --- Scrolled State (فشرده) --- */
     header#mainHeader.is-scrolled {
-      padding: 0.65rem 1.25rem !important;
-      background: rgba(255, 255, 255, 0.88);
+      padding: 0.65rem 1.25rem;
+      background: rgba(255, 255, 255, 0.92);
       box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.1), 0 4px 6px -4px rgba(15, 23, 42, 0.05);
       border-color: rgba(203, 213, 225, 0.8);
     }
 
-    header#mainHeader.is-scrolled #headerImg {
-      width: 52px;
-      height: 52px;
+    header#mainHeader.is-scrolled .avatar-wrapper {
+      width: 50px;
+      height: 50px;
     }
 
     header#mainHeader.is-scrolled #headerTitle {
@@ -144,37 +140,35 @@
     }
 
     header#mainHeader.is-scrolled #headerSub {
-      font-size: 0.875rem;
+      font-size: 0.85rem;
       margin-top: 0;
     }
 
-    /* مخفی‌سازی بج‌ها و وابستگی در اسکرول جهت کاهش اشغال فضای عمودی */
     header#mainHeader.is-scrolled #headerAffil,
     header#mainHeader.is-scrolled #headerBadges {
-    opacity: 0;
-    max-height: 0;
-    margin: 0 !important;
-    pointer-events: none;
+      opacity: 0;
+      max-height: 0;
+      margin: 0 !important;
+      pointer-events: none;
     }
 
     @media (max-width: 767px) {
       header#mainHeader {
         padding: 1.25rem 1rem;
       }
-      #headerImg {
-        width: 96px;
-        height: 96px;
+      .avatar-wrapper {
+        width: 88px;
+        height: 88px;
       }
-      /* در موبایل هنگام اسکرول، لایه‌بندی افقی فشرده و تر و تمیز */
       header#mainHeader.is-scrolled {
         flex-direction: row !important;
         text-align: left !important;
         align-items: center !important;
         gap: 12px !important;
       }
-      header#mainHeader.is-scrolled #headerImg {
-        width: 48px;
-        height: 48px;
+      header#mainHeader.is-scrolled .avatar-wrapper {
+        width: 44px;
+        height: 44px;
       }
     }
 
@@ -195,7 +189,7 @@
       transition: width 0.1s linear;
     }
 
-    /* --- 3. Return to Top Button with Avatar --- */
+    /* --- 3. Return to Top Button --- */
     .back-to-top {
       position: fixed;
       bottom: 24px;
@@ -235,7 +229,7 @@
       display: block;
     }
 
-    /* --- 4. علایق پژوهشی (Research Interests) --- */
+    /* --- 4. علایق پژوهشی --- */
     .interests {
       margin: 32px 0;
     }
@@ -287,11 +281,11 @@
 
   <main class="max-w-3xl mx-auto px-4 sm:px-6 py-6 sm:py-10 space-y-8">
     
-    <!-- Header (شناور و هم‌عرض با کانتینر) -->
+    <!-- Header -->
     <header id="mainHeader" class="flex flex-col md:flex-row items-center gap-5 sm:gap-6 text-center md:text-left">
-      <!-- Profile Image -->
-      <div class="flex-shrink-0">
-        <img id="headerImg" src="drea.jpg" alt="Dr. Ehsan Abedini - دکتر احسان عابدینی" class="rounded-full object-cover shadow-sm border-2 border-white ring-2 ring-indigo-100">
+      <!-- Profile Image Wrapper -->
+      <div class="avatar-wrapper flex-shrink-0">
+        <img id="headerImg" src="drea.jpg" alt="Dr. Ehsan Abedini - دکتر احسان عابدینی" class="rounded-full shadow-sm border-2 border-white ring-2 ring-indigo-100">
       </div>
       
       <div class="header-info flex-1 min-w-0">
@@ -394,17 +388,16 @@
         progressBar.style.width = progressPercent + '%';
       }
 
-// ۲. وضعیت هدر در اسکرول — با Hysteresis برای حذف نوسان
-if (header) {
-  if (!isScrolled && scrollTop > 60) {        // ورود به حالت فشرده: آستانه بالاتر
-    header.classList.add('is-scrolled');
-    isScrolled = true;
-  } else if (isScrolled && scrollTop < 20) {  // بازگشت: آستانه پایین‌تر (۴۰px فاصله پسماند)
-    header.classList.remove('is-scrolled');
-    isScrolled = false;
-  }
-}
-
+      // ۲. وضعیت هدر در اسکرول با Hysteresis (شکستن حلقه بازخورد پرش)
+      if (header) {
+        if (!isScrolled && scrollTop > 65) {
+          header.classList.add('is-scrolled');
+          isScrolled = true;
+        } else if (isScrolled && scrollTop < 20) {
+          header.classList.remove('is-scrolled');
+          isScrolled = false;
+        }
+      }
 
       // ۳. دکمه بازگشت به بالا
       if (backToTopBtn) {
