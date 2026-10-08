@@ -73,13 +73,12 @@
   </script>
 
   <style>
-    /* پس‌زمینه با هاله گرادیان جهت نمایش بی نقص Glassmorphism */
     body {
       background-color: #f8fafc;
       background-image: 
-        radial-gradient(at 15% 10%, rgba(99, 102, 241, 0.08) 0px, transparent 50%),
-        radial-gradient(at 85% 25%, rgba(14, 165, 233, 0.08) 0px, transparent 50%),
-        radial-gradient(at 50% 80%, rgba(16, 185, 129, 0.04) 0px, transparent 60%);
+        radial-gradient(at 10% 10%, rgba(99, 102, 241, 0.12) 0px, transparent 45%),
+        radial-gradient(at 90% 20%, rgba(14, 165, 233, 0.12) 0px, transparent 45%),
+        radial-gradient(at 50% 90%, rgba(16, 185, 129, 0.08) 0px, transparent 50%);
       background-attachment: fixed;
     }
 
@@ -91,29 +90,28 @@
       width: 100%;
       box-sizing: border-box;
       
-      /* شیشه شفاف مدرن با کنتراست تقویت‌شده */
-      background: rgba(255, 255, 255, 0.55);
-      backdrop-filter: blur(18px) saturate(180%);
-      -webkit-backdrop-filter: blur(18px) saturate(180%);
+      /* شیشه شفاف یخی */
+      background: rgba(255, 255, 255, 0.60);
+      backdrop-filter: blur(12px) saturate(160%);
+      -webkit-backdrop-filter: blur(12px) saturate(160%);
       
       border-radius: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.8);
-      box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06), 0 0 0 1px rgba(226, 232, 240, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 0 0 1px rgba(226, 232, 240, 0.5);
       
-      padding: 1.35rem 1.5rem;
-      transition: padding 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
-                  background-color 0.25s ease, 
-                  border-color 0.25s ease,
-                  box-shadow 0.25s ease;
-      will-change: padding, background-color;
+      padding: 1.25rem 1.5rem;
+      transition: padding 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+                  background-color 0.3s ease, 
+                  border-color 0.3s ease,
+                  box-shadow 0.3s ease;
     }
 
-    /* کانتینر آواتار با ثبات هندسی */
+    /* کانتینر آواتار */
     .avatar-wrapper {
-      width: 100px;
-      height: 100px;
-      transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
-                  height 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      width: 96px;
+      height: 96px;
+      transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+                  height 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     #headerImg {
@@ -123,30 +121,30 @@
     }
 
     #headerTitle, #headerSub {
-      transition: font-size 0.2s ease;
+      transition: font-size 0.25s ease;
     }
 
-    /* محو شدن المان‌ها بدون تغییر ناگهانی اسکرول */
+    /* محو شدن نرم بخش‌های اضافه */
     #headerAffil, #headerBadges {
-      transition: opacity 0.2s ease, max-height 0.25s cubic-bezier(0.16, 1, 0.3, 1), margin 0.2s ease;
+      transition: opacity 0.2s ease, max-height 0.3s cubic-bezier(0.16, 1, 0.3, 1), margin 0.25s ease;
       max-height: 140px;
       opacity: 1;
       overflow: hidden;
     }
 
-    /* --- Scrolled State (حالت فشرده و شناور شیشه‌ای) --- */
+    /* --- Scrolled State (حالت فشرده با عبور کامل متون زیرین) --- */
     header#mainHeader.is-scrolled {
-      padding: 0.65rem 1.25rem;
-      background: rgba(255, 255, 255, 0.55);
-      backdrop-filter: blur(12px) saturate(200%);
-      -webkit-backdrop-filter: blur(20px) saturate(200%);
-      box-shadow: 0 12px 28px -6px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(203, 213, 225, 0.8);
-      border-color: rgba(255, 255, 255, 0.9);
+      padding: 0.6rem 1.25rem;
+      background: rgba(255, 255, 255, 0.65); /* شفافیت متناسب جهت دیده شدن متن‌های زیرین */
+      backdrop-filter: blur(14px) saturate(170%);
+      -webkit-backdrop-filter: blur(14px) saturate(170%);
+      box-shadow: 0 10px 25px -4px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(203, 213, 225, 0.7);
+      border-color: rgba(255, 255, 255, 0.95);
     }
 
     header#mainHeader.is-scrolled .avatar-wrapper {
-      width: 48px;
-      height: 48px;
+      width: 46px;
+      height: 46px;
     }
 
     header#mainHeader.is-scrolled #headerTitle {
@@ -169,11 +167,11 @@
 
     @media (max-width: 767px) {
       header#mainHeader {
-        padding: 1.2rem 1rem;
+        padding: 1.15rem 1rem;
       }
       .avatar-wrapper {
-        width: 84px;
-        height: 84px;
+        width: 80px;
+        height: 80px;
       }
       header#mainHeader.is-scrolled {
         flex-direction: row !important;
@@ -182,8 +180,8 @@
         gap: 12px !important;
       }
       header#mainHeader.is-scrolled .avatar-wrapper {
-        width: 42px;
-        height: 42px;
+        width: 40px;
+        height: 40px;
       }
     }
 
@@ -262,9 +260,9 @@
       display: flex;
       flex-direction: column;
       gap: 3px;
-      background: rgba(255, 255, 255, 0.9);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
       padding: 12px 14px;
       border-radius: 12px;
       border: 1px solid #e2e8f0;
@@ -312,7 +310,7 @@
           <p class="text-sm sm:text-base text-indigo-600 font-medium mt-1">PhD in Health Management &amp; Policy</p>
           <p class="text-slate-600 text-xs sm:text-sm mt-0.5">Mazandaran University of Medical Sciences (MAZUMS)</p>
         </div>
-        <div id="headerBadges" class="mt-3.5 flex flex-wrap gap-2 justify-center md:justify-start">
+        <div id="headerBadges" class="mt-3 flex flex-wrap gap-2 justify-center md:justify-start">
           <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-indigo-50/90 text-indigo-700 border border-indigo-200">Academic Editor @ PLOS ONE &amp; Medical Science</span>
           <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-50/90 text-emerald-700 border border-emerald-200">SEM &amp; Statistical Computing</span>
         </div>
@@ -387,7 +385,7 @@
     <img src="drea.jpg" alt="Dr. Ehsan Abedini">
   </button>
 
-  <!-- JavaScript بهینه‌شده با requestAnimationFrame جهت تضمین ۶۰ فریم و ثبات هندسی -->
+  <!-- JavaScript با آستانه پسماند پهن (Anti-Jitter Hysteresis) -->
   <script>
     const header = document.getElementById('mainHeader');
     const progressBar = document.getElementById('progressBar');
@@ -408,12 +406,12 @@
             progressBar.style.width = progressPercent + '%';
           }
 
-          // ۲. وضعیت هدر در اسکرول با بازه امن پسماند (Hysteresis)
+          // ۲. شکستن قطعی حلقه لرزش با گسترش دامنه Hysteresis به ۱۰۰ و ۱۰ پیکسل
           if (header) {
-            if (!isScrolled && scrollTop > 70) {
+            if (!isScrolled && scrollTop > 100) {
               header.classList.add('is-scrolled');
               isScrolled = true;
-            } else if (isScrolled && scrollTop < 15) {
+            } else if (isScrolled && scrollTop < 10) {
               header.classList.remove('is-scrolled');
               isScrolled = false;
             }
