@@ -82,6 +82,17 @@
       background-attachment: fixed;
     }
 
+    /* لنگرگاه و فوت‌پرینت پایدار هدر برای جلوگیری از پرش چیدمان صفحه */
+    .header-anchor {
+      width: 100%;
+      min-height: 180px;
+    }
+    @media (max-width: 767px) {
+      .header-anchor {
+        min-height: 245px;
+      }
+    }
+
     /* --- 1. Sticky Floating Header --- */
     header#mainHeader {
       position: sticky;
@@ -132,10 +143,10 @@
       overflow: hidden;
     }
 
-    /* --- Scrolled State (حالت فشرده با عبور کامل متون زیرین) --- */
+    /* --- Scrolled State (شفاف و عبوردهنده متون) --- */
     header#mainHeader.is-scrolled {
       padding: 0.6rem 1.25rem;
-      background: rgba(255, 255, 255, 0.65); /* شفافیت متناسب جهت دیده شدن متن‌های زیرین */
+      background: rgba(255, 255, 255, 0.65);
       backdrop-filter: blur(14px) saturate(170%);
       -webkit-backdrop-filter: blur(14px) saturate(170%);
       box-shadow: 0 10px 25px -4px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(203, 213, 225, 0.7);
@@ -296,26 +307,29 @@
 
   <main class="max-w-3xl mx-auto px-4 sm:px-6 py-4 sm:py-8 space-y-8">
     
-    <!-- Header -->
-    <header id="mainHeader" class="flex flex-col md:flex-row items-center gap-5 sm:gap-6 text-center md:text-left">
-      <!-- Profile Image Wrapper -->
-      <div class="avatar-wrapper flex-shrink-0">
-        <img id="headerImg" src="drea.jpg" alt="Dr. Ehsan Abedini - دکتر احسان عابدینی" class="rounded-full shadow-sm border-2 border-white ring-2 ring-indigo-100">
-      </div>
-      
-      <div class="header-info flex-1 min-w-0">
-        <h1 id="headerTitle" class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Dr. Ehsan Abedini</h1>
-        <h2 id="headerSub" class="text-base sm:text-lg text-slate-700 font-semibold mt-0.5">دکتر احسان عابدینی</h2>
-        <div id="headerAffil">
-          <p class="text-sm sm:text-base text-indigo-600 font-medium mt-1">PhD in Health Management &amp; Policy</p>
-          <p class="text-slate-600 text-xs sm:text-sm mt-0.5">Mazandaran University of Medical Sciences (MAZUMS)</p>
+    <!-- لنگرگاه هدر برای پایداری جریان سند -->
+    <div class="header-anchor">
+      <!-- Header کپسولی شناور -->
+      <header id="mainHeader" class="flex flex-col md:flex-row items-center gap-5 sm:gap-6 text-center md:text-left">
+        <!-- Profile Image Wrapper -->
+        <div class="avatar-wrapper flex-shrink-0">
+          <img id="headerImg" src="drea.jpg" alt="Dr. Ehsan Abedini - دکتر احسان عابدینی" class="rounded-full shadow-sm border-2 border-white ring-2 ring-indigo-100">
         </div>
-        <div id="headerBadges" class="mt-3 flex flex-wrap gap-2 justify-center md:justify-start">
-          <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-indigo-50/90 text-indigo-700 border border-indigo-200">Academic Editor @ PLOS ONE &amp; Medical Science</span>
-          <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-50/90 text-emerald-700 border border-emerald-200">SEM &amp; Statistical Computing</span>
+        
+        <div class="header-info flex-1 min-w-0">
+          <h1 id="headerTitle" class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Dr. Ehsan Abedini</h1>
+          <h2 id="headerSub" class="text-base sm:text-lg text-slate-700 font-semibold mt-0.5">دکتر احسان عابدینی</h2>
+          <div id="headerAffil">
+            <p class="text-sm sm:text-base text-indigo-600 font-medium mt-1">PhD in Health Management &amp; Policy</p>
+            <p class="text-slate-600 text-xs sm:text-sm mt-0.5">Mazandaran University of Medical Sciences (MAZUMS)</p>
+          </div>
+          <div id="headerBadges" class="mt-3 flex flex-wrap gap-2 justify-center md:justify-start">
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-indigo-50/90 text-indigo-700 border border-indigo-200">Academic Editor @ PLOS ONE &amp; Medical Science</span>
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-50/90 text-emerald-700 border border-emerald-200">SEM &amp; Statistical Computing</span>
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
+    </div>
 
     <!-- English About -->
     <section class="py-4 border-b border-slate-200/80 text-justify leading-relaxed">
@@ -385,7 +399,7 @@
     <img src="drea.jpg" alt="Dr. Ehsan Abedini">
   </button>
 
-  <!-- JavaScript با آستانه پسماند پهن (Anti-Jitter Hysteresis) -->
+  <!-- JavaScript بدون بازخورد پرش چیدمان -->
   <script>
     const header = document.getElementById('mainHeader');
     const progressBar = document.getElementById('progressBar');
@@ -406,12 +420,12 @@
             progressBar.style.width = progressPercent + '%';
           }
 
-          // ۲. شکستن قطعی حلقه لرزش با گسترش دامنه Hysteresis به ۱۰۰ و ۱۰ پیکسل
+          // ۲. وضعیت هدر در اسکرول با ایمنی کامل جریان سند
           if (header) {
-            if (!isScrolled && scrollTop > 100) {
+            if (!isScrolled && scrollTop > 130) {
               header.classList.add('is-scrolled');
               isScrolled = true;
-            } else if (isScrolled && scrollTop < 10) {
+            } else if (isScrolled && scrollTop < 35) {
               header.classList.remove('is-scrolled');
               isScrolled = false;
             }
@@ -419,7 +433,7 @@
 
           // ۳. دکمه بازگشت به بالا
           if (backToTopBtn) {
-            if (scrollTop > 220) {
+            if (scrollTop > 240) {
               backToTopBtn.classList.add('visible');
             } else {
               backToTopBtn.classList.remove('visible');
