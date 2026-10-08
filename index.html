@@ -18,13 +18,18 @@
   <meta name="twitter:description" content="Researcher in Health Management & Policy, Mazandaran University of Medical Sciences. Academic Editor at PLOS ONE.">
   <meta name="twitter:image" content="https://ehsan-abedini.github.io/drea.jpg">
 
-  <meta name="description" content="صفحه رسمی دکتر احسان عابدینی، پژوهشگر مدیریت خدمات بهداشتی و درمانی دانشگاه علوم پزشکی مازندران و ادیتور آکادمیک. Official academic homepage of Dr. Ehsan Abedini.">
+  <meta name="description" content="صفحه رسمی دکتر احسان عابدینی، پژوهشگر مدیریت خدمات بهداشتی و درمانی دانشگاه علوم پزشکی مازندران و ادیتور آکادمیک.">
   <meta name="author" content="Dr. Ehsan Abedini | دکتر احسان عابدینی">
   <link rel="canonical" href="https://ehsan-abedini.github.io/">
 
   <!-- Favicon -->
   <link rel="icon" type="image/jpeg" href="drea.jpg">
   <link rel="apple-touch-icon" href="drea.jpg">
+
+  <!-- Fonts: Plus Jakarta Sans & Vazirmatn -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <script src="https://cdn.tailwindcss.com"></script>
 
@@ -73,71 +78,63 @@
   </script>
 
   <style>
+    :root {
+      --font-en: 'Plus Jakarta Sans', sans-serif;
+      --font-fa: 'Vazirmatn', sans-serif;
+    }
+
     body {
+      font-family: var(--font-en);
       background-color: #f8fafc;
       background-image: 
-        radial-gradient(at 10% 10%, rgba(99, 102, 241, 0.12) 0px, transparent 45%),
-        radial-gradient(at 90% 20%, rgba(14, 165, 233, 0.12) 0px, transparent 45%),
-        radial-gradient(at 50% 90%, rgba(16, 185, 129, 0.08) 0px, transparent 50%);
+        radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(14, 165, 233, 0.15) 0px, transparent 50%),
+        radial-gradient(at 50% 100%, rgba(16, 185, 129, 0.10) 0px, transparent 50%);
       background-attachment: fixed;
     }
 
-    /* --- هدر شناور ثابت (Fixed Glass Header) --- */
+    .font-fa, [dir="rtl"] {
+      font-family: var(--font-fa);
+    }
+
+    /* --- هدر شناور فیکس --- */
     header#mainHeader {
       position: fixed;
       top: 14px;
       left: 50%;
       transform: translateX(-50%);
       width: calc(100% - 2rem);
-      max-width: 48rem; /* هم‌عرض با max-w-3xl */
+      max-width: 48rem;
       z-index: 1000;
       box-sizing: border-box;
       
-      /* افکت شیشه نیمه شفاف و براق */
-      background: rgba(255, 255, 255, 0.60);
-      backdrop-filter: blur(12px) saturate(160%);
-      -webkit-backdrop-filter: blur(12px) saturate(160%);
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
       
-      border-radius: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.85);
-      box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06), 0 0 0 1px rgba(226, 232, 240, 0.6);
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.05), 0 0 0 1px rgba(226, 232, 240, 0.7);
       
-      padding: 1.15rem 1.5rem;
-      transition: padding 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
-                  background-color 0.3s ease, 
-                  box-shadow 0.3s ease,
-                  border-color 0.3s ease;
+      padding: 1.25rem 1.75rem;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    /* کانتینر محتوای صفحه با فاصله بالایی مناسب */
     main {
-      padding-top: 215px !important;
+      padding-top: 220px !important;
     }
     @media (max-width: 767px) {
       main {
-        padding-top: 275px !important;
+        padding-top: 290px !important;
       }
     }
 
-    /* اندازه تصویر آواتار */
     .avatar-wrapper {
-      width: 88px;
-      height: 88px;
-      transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
-                  height 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      width: 90px;
+      height: 90px;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    #headerImg {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    #headerTitle, #headerSub {
-      transition: font-size 0.25s ease;
-    }
-
-    /* انیمیشن نرم بخش‌های کمکی */
     #headerAffil, #headerBadges {
       transition: opacity 0.2s ease, max-height 0.3s cubic-bezier(0.16, 1, 0.3, 1), margin 0.25s ease;
       max-height: 140px;
@@ -145,14 +142,14 @@
       overflow: hidden;
     }
 
-    /* --- وضعیت جمع‌شده (فوق‌العاده شیشه‌ای و جمع‌وجور) --- */
+    /* وضعیت جمع‌شده هدر */
     header#mainHeader.is-scrolled {
-      padding: 0.55rem 1.25rem;
-      background: rgba(255, 255, 255, 0.60);
-      backdrop-filter: blur(12px) saturate(180%);
-      -webkit-backdrop-filter: blur(12px) saturate(180%);
-      box-shadow: 0 10px 25px -4px rgba(15, 23, 42, 0.09), 0 0 0 1px rgba(203, 213, 225, 0.75);
-      border-color: rgba(255, 255, 255, 0.95);
+      padding: 0.6rem 1.25rem;
+      background: rgba(255, 255, 255, 0.82);
+      backdrop-filter: blur(20px) saturate(190%);
+      -webkit-backdrop-filter: blur(20px) saturate(190%);
+      box-shadow: 0 12px 30px -4px rgba(15, 23, 42, 0.1), 0 0 0 1px rgba(203, 213, 225, 0.8);
+      border-radius: 18px;
     }
 
     header#mainHeader.is-scrolled .avatar-wrapper {
@@ -162,7 +159,6 @@
 
     header#mainHeader.is-scrolled #headerTitle {
       font-size: 1.15rem;
-      line-height: 1.25;
     }
 
     header#mainHeader.is-scrolled #headerSub {
@@ -180,7 +176,7 @@
 
     @media (max-width: 767px) {
       header#mainHeader {
-        padding: 1rem;
+        padding: 1.1rem;
       }
       .avatar-wrapper {
         width: 76px;
@@ -198,7 +194,7 @@
       }
     }
 
-    /* --- نوار پیشرفت اسکرول --- */
+    /* نوار پیشرفت */
     .scroll-progress-container {
       position: fixed;
       top: 0;
@@ -210,22 +206,70 @@
     }
     .scroll-progress-bar {
       height: 100%;
-      background: linear-gradient(90deg, #4f46e5, #0ea5e9);
+      background: linear-gradient(90deg, #4f46e5, #0ea5e9, #10b981);
       width: 0%;
       transition: width 0.08s linear;
     }
 
-    /* --- دکمه بازگشت به بالا --- */
+    /* کارت‌های شیشه‌ای بخش‌های مختلف */
+    .content-card {
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(226, 232, 240, 0.8);
+      border-radius: 20px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.03);
+      transition: all 0.25s ease;
+    }
+    .content-card:hover {
+      border-color: rgba(199, 210, 254, 0.9);
+      box-shadow: 0 8px 24px -4px rgba(79, 70, 229, 0.06);
+    }
+
+    /* برچسب‌های علایق پژوهشی */
+    .tag-item {
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 12px 14px;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .tag-item:hover {
+      border-color: #818cf8;
+      background: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px -2px rgba(99, 102, 241, 0.12);
+    }
+
+    /* کارت‌های پروفایل آکادمیک */
+    .profile-link {
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 1rem 1.15rem;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      transition: all 0.25s ease;
+    }
+    .profile-link:hover {
+      background: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px -4px rgba(15, 23, 42, 0.08);
+    }
+
+    /* دکمه بازگشت به بالا */
     .back-to-top {
       position: fixed;
       bottom: 24px;
       right: 24px;
-      width: 46px;
-      height: 46px;
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
       background: #ffffff;
-      border: 2px solid #4f46e5;
-      box-shadow: 0 4px 14px rgba(79, 70, 229, 0.25);
+      border: 2px solid #6366f1;
+      box-shadow: 0 6px 18px rgba(99, 102, 241, 0.25);
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -244,161 +288,192 @@
       transform: translateY(0);
     }
     .back-to-top:hover {
-      transform: translateY(-3px) scale(1.08);
-      box-shadow: 0 6px 20px rgba(79, 70, 229, 0.35);
-    }
-    .back-to-top img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 50%;
-      display: block;
-    }
-
-    /* --- برچسب‌های علایق پژوهشی --- */
-    .interests {
-      margin: 32px 0;
-    }
-    .tags {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px 14px;
-    }
-    @media (max-width: 640px) {
-      .tags { 
-        grid-template-columns: 1fr; 
-      }
-    }
-    .tag {
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      padding: 12px 14px;
-      border-radius: 12px;
-      border: 1px solid #e2e8f0;
-      transition: all 0.2s ease;
-    }
-    .tag:hover {
-      border-color: #cbd5e1;
-      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
-      transform: translateY(-1px);
-    }
-    .tag .en {
-      font-weight: 600;
-      color: #0f172a;
-      font-size: 0.92rem;
-      line-height: 1.4;
-    }
-    .tag .fa {
-      color: #64748b;
-      font-size: 0.82rem;
-      line-height: 1.5;
+      transform: translateY(-3px) scale(1.06);
+      box-shadow: 0 10px 25px rgba(99, 102, 241, 0.35);
     }
   </style>
 </head>
   
-<body class="text-slate-800 font-sans antialiased selection:bg-indigo-100 selection:text-indigo-900 min-h-screen">
+<body class="text-slate-800 antialiased selection:bg-indigo-100 selection:text-indigo-900 min-h-screen">
 
   <!-- Scroll Progress Bar -->
   <div class="scroll-progress-container">
     <div class="scroll-progress-bar" id="progressBar"></div>
   </div>
 
-  <!-- هدر شناور و شیشه‌ای ثابت -->
+  <!-- Header کپسولی و شیشه‌ای شناور -->
   <header id="mainHeader" class="flex flex-col md:flex-row items-center gap-5 sm:gap-6 text-center md:text-left">
-    <!-- Profile Image Wrapper -->
-    <div class="avatar-wrapper flex-shrink-0">
-      <img id="headerImg" src="drea.jpg" alt="Dr. Ehsan Abedini - دکتر احسان عابدینی" class="rounded-full shadow-sm border-2 border-white ring-2 ring-indigo-100">
+    <div class="avatar-wrapper flex-shrink-0 relative">
+      <img id="headerImg" src="drea.jpg" alt="Dr. Ehsan Abedini - دکتر احسان عابدینی" class="w-full h-full object-cover rounded-full shadow-sm border-2 border-white ring-2 ring-indigo-200/70">
     </div>
     
     <div class="header-info flex-1 min-w-0">
-      <h1 id="headerTitle" class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Dr. Ehsan Abedini</h1>
-      <h2 id="headerSub" class="text-base sm:text-lg text-slate-700 font-semibold mt-0.5">دکتر احسان عابدینی</h2>
-      <div id="headerAffil">
-        <p class="text-sm sm:text-base text-indigo-600 font-medium mt-1">PhD in Health Management &amp; Policy</p>
-        <p class="text-slate-600 text-xs sm:text-sm mt-0.5">Mazandaran University of Medical Sciences (MAZUMS)</p>
+      <div class="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-2 justify-center md:justify-start">
+        <h1 id="headerTitle" class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Dr. Ehsan Abedini</h1>
+        <h2 id="headerSub" class="text-base sm:text-lg text-slate-600 font-semibold font-fa">دکتر احسان عابدینی</h2>
       </div>
+      
+      <div id="headerAffil">
+        <p class="text-sm sm:text-base text-indigo-600 font-semibold mt-1">PhD in Health Management &amp; Policy</p>
+        <p class="text-slate-500 text-xs sm:text-sm mt-0.5 font-medium">Mazandaran University of Medical Sciences (MAZUMS)</p>
+      </div>
+
       <div id="headerBadges" class="mt-3 flex flex-wrap gap-2 justify-center md:justify-start">
-        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-indigo-50/90 text-indigo-700 border border-indigo-200">Academic Editor @ PLOS ONE &amp; Medical Science</span>
-        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-50/90 text-emerald-700 border border-emerald-200">SEM &amp; Statistical Computing</span>
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50/90 text-indigo-700 border border-indigo-200/80 shadow-xs">
+          <span class="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse"></span>
+          Academic Editor @ PLOS ONE &amp; Medical Science
+        </span>
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50/90 text-emerald-700 border border-emerald-200/80 shadow-xs">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+          SEM &amp; Statistical Computing
+        </span>
       </div>
     </div>
   </header>
 
-  <main class="max-w-3xl mx-auto px-4 sm:px-6 pb-12 space-y-8">
+  <!-- Main Container -->
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 pb-16 space-y-6">
     
-    <!-- English About -->
-    <section class="py-4 border-b border-slate-200/80 text-justify leading-relaxed">
-      <h2 class="text-lg font-bold text-slate-900 mb-2.5 text-left">About</h2>
-      <p class="text-slate-700 text-sm sm:text-base">
+    <!-- English About Card -->
+    <section class="content-card text-justify leading-relaxed">
+      <div class="flex items-center gap-2 mb-3">
+        <div class="w-2 h-5 bg-indigo-600 rounded-full"></div>
+        <h2 class="text-base font-bold text-slate-900 tracking-tight">About</h2>
+      </div>
+      <p class="text-slate-700 text-sm sm:text-base leading-relaxed">
         Researcher in Health Management and Policy at the Health Sciences Research Center, Mazandaran University of Medical Sciences. Focus areas include health data governance, management consulting, urban primary healthcare, and advanced statistical computing with SEM &amp; R. Serving as an Academic Editor for <em>PLOS ONE</em> and <em>Medical Science</em>.
       </p>
     </section>
 
-    <!-- Persian About -->
-    <section class="py-4 border-b border-slate-200/80 text-justify leading-relaxed" dir="rtl">
-      <h2 class="text-lg font-bold text-slate-900 mb-2.5 text-right font-semibold">درباره</h2>
+    <!-- Persian About Card -->
+    <section class="content-card text-justify leading-relaxed font-fa" dir="rtl">
+      <div class="flex items-center gap-2 mb-3">
+        <div class="w-2 h-5 bg-indigo-600 rounded-full"></div>
+        <h2 class="text-base font-bold text-slate-900 tracking-tight font-fa">درباره</h2>
+      </div>
       <p class="text-slate-700 text-sm sm:text-base leading-loose">
         <strong>دکتر احسان عابدینی</strong>، پژوهشگر مدیریت خدمات بهداشتی و درمانی در مرکز تحقیقات علوم بهداشتی دانشگاه علوم پزشکی مازندران. حوزه‌های پژوهشی شامل حکمرانی داده‌های سلامت، مشاور مدیریتی و هزینه-فایده بیمارستانی، مراقبت‌های اولیه و سلامت شهری، و مدلسازی معادلات ساختاری (SEM). ادیتور آکادمیک مجلات بین‌المللی <em>PLOS ONE</em> و <em>Medical Science</em>.
       </p>
     </section>
 
-    <!-- علایق پژوهشی -->
-    <section class="interests !my-6">
-      <h2 class="text-lg font-bold text-slate-900 mb-4">Research Interests | علایق پژوهشی</h2>
-      <div class="tags">
-        <span class="tag"><span class="en">Health Data Governance</span><span class="fa">حکمرانی داده‌های سلامت</span></span>
-        <span class="tag"><span class="en">Management Consulting</span><span class="fa">مشاوره مدیریتی</span></span>
-        <span class="tag"><span class="en">Structural Equation Modeling &amp; R</span><span class="fa">مدلسازی معادلات ساختاری</span></span>
-        <span class="tag"><span class="en">Digital Health &amp; Health Information Systems</span><span class="fa">سلامت دیجیتال و سیستم‌های اطلاعات سلامت</span></span>
-        <span class="tag"><span class="en">Urban Primary Healthcare</span><span class="fa">مراقبت‌های اولیه و سلامت شهری</span></span>
-        <span class="tag"><span class="en">Hospital Cost-Benefit Analysis</span><span class="fa">تحلیل هزینه-فایده بیمارستانی</span></span>
-        <span class="tag"><span class="en">Health Policy Analysis</span><span class="fa">تحلیل خط‌مشی سلامت</span></span>
-        <span class="tag"><span class="en">Hospital &amp; Emergency Resilience</span><span class="fa">تاب‌آوری بیمارستانی و اورژانس</span></span>
-        <span class="tag"><span class="en">Healthcare Operations &amp; Quality</span><span class="fa">مدیریت عملیات و کیفیت سلامت</span></span>
-        <span class="tag"><span class="en">Health Technology &amp; AI Governance</span><span class="fa">حکمرانی هوش مصنوعی و فناوری سلامت</span></span>
+    <!-- Research Interests Grid -->
+    <section class="content-card">
+      <div class="flex items-center gap-2 mb-4">
+        <div class="w-2 h-5 bg-sky-500 rounded-full"></div>
+        <h2 class="text-base font-bold text-slate-900 tracking-tight">Research Interests | علایق پژوهشی</h2>
+      </div>
+      
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div class="tag-item">
+          <div class="font-semibold text-slate-900 text-sm">Health Data Governance</div>
+          <div class="text-xs text-slate-500 font-fa mt-0.5">حکمرانی داده‌های سلامت</div>
+        </div>
+        <div class="tag-item">
+          <div class="font-semibold text-slate-900 text-sm">Management Consulting</div>
+          <div class="text-xs text-slate-500 font-fa mt-0.5">مشاوره مدیریتی</div>
+        </div>
+        <div class="tag-item">
+          <div class="font-semibold text-slate-900 text-sm">Structural Equation Modeling &amp; R</div>
+          <div class="text-xs text-slate-500 font-fa mt-0.5">مدلسازی معادلات ساختاری</div>
+        </div>
+        <div class="tag-item">
+          <div class="font-semibold text-slate-900 text-sm">Digital Health &amp; HIS</div>
+          <div class="text-xs text-slate-500 font-fa mt-0.5">سلامت دیجیتال و سیستم‌های اطلاعات سلامت</div>
+        </div>
+        <div class="tag-item">
+          <div class="font-semibold text-slate-900 text-sm">Urban Primary Healthcare</div>
+          <div class="text-xs text-slate-500 font-fa mt-0.5">مراقبت‌های اولیه و سلامت شهری</div>
+        </div>
+        <div class="tag-item">
+          <div class="font-semibold text-slate-900 text-sm">Hospital Cost-Benefit Analysis</div>
+          <div class="text-xs text-slate-500 font-fa mt-0.5">تحلیل هزینه-فایده بیمارستانی</div>
+        </div>
+        <div class="tag-item">
+          <div class="font-semibold text-slate-900 text-sm">Health Policy Analysis</div>
+          <div class="text-xs text-slate-500 font-fa mt-0.5">تحلیل خط‌مشی سلامت</div>
+        </div>
+        <div class="tag-item">
+          <div class="font-semibold text-slate-900 text-sm">Hospital &amp; Emergency Resilience</div>
+          <div class="text-xs text-slate-500 font-fa mt-0.5">تاب‌آوری بیمارستانی و اورژانس</div>
+        </div>
+        <div class="tag-item">
+          <div class="font-semibold text-slate-900 text-sm">Healthcare Operations &amp; Quality</div>
+          <div class="text-xs text-slate-500 font-fa mt-0.5">مدیریت عملیات و کیفیت سلامت</div>
+        </div>
+        <div class="tag-item">
+          <div class="font-semibold text-slate-900 text-sm">Health Technology &amp; AI Governance</div>
+          <div class="text-xs text-slate-500 font-fa mt-0.5">حکمرانی هوش مصنوعی و فناوری سلامت</div>
+        </div>
       </div>
     </section>
     
-    <!-- Academic Profiles -->
-    <section class="py-4">
-      <h2 class="text-lg font-bold text-slate-900 mb-4">Academic Profiles</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-        <a href="https://scholar.google.com/citations?user=ncZmq8oAAAAJ" target="_blank" rel="noopener noreferrer" class="p-3.5 rounded-xl border border-slate-200/90 bg-white/80 backdrop-blur-sm hover:border-indigo-400 hover:shadow-sm transition group">
-          <div class="font-semibold text-slate-900 group-hover:text-indigo-600">Google Scholar</div>
-          <div class="text-xs text-slate-400 mt-1">گوگل اسکالر</div>
+    <!-- Academic Profiles with SVG Icons -->
+    <section class="content-card">
+      <div class="flex items-center gap-2 mb-4">
+        <div class="w-2 h-5 bg-emerald-500 rounded-full"></div>
+        <h2 class="text-base font-bold text-slate-900 tracking-tight">Academic Profiles &amp; Repositories</h2>
+      </div>
+      
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <!-- Google Scholar -->
+        <a href="https://scholar.google.com/citations?user=ncZmq8oAAAAJ" target="_blank" rel="noopener noreferrer" class="profile-link group hover:border-indigo-400">
+          <div class="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center flex-shrink-0 text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/></svg>
+          </div>
+          <div>
+            <div class="font-semibold text-slate-900 text-sm group-hover:text-indigo-600 transition">Google Scholar</div>
+            <div class="text-xs text-slate-400 font-fa">گوگل اسکالر</div>
+          </div>
         </a>
-        <a href="https://orcid.org/0000-0003-3767-0780" target="_blank" rel="noopener noreferrer" class="p-3.5 rounded-xl border border-slate-200/90 bg-white/80 backdrop-blur-sm hover:border-emerald-400 hover:shadow-sm transition group">
-          <div class="font-semibold text-slate-900 group-hover:text-emerald-600">ORCID iD</div>
-          <div class="text-xs text-slate-400 mt-1">شناسه ارکید</div>
+
+        <!-- ORCID -->
+        <a href="https://orcid.org/0000-0003-3767-0780" target="_blank" rel="noopener noreferrer" class="profile-link group hover:border-emerald-400">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center flex-shrink-0 text-[#A6CE39] group-hover:bg-[#A6CE39] group-hover:text-white transition">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-2.016-1.284-3.722-4.097-3.722h-2.222z"/></svg>
+          </div>
+          <div>
+            <div class="font-semibold text-slate-900 text-sm group-hover:text-emerald-600 transition">ORCID iD</div>
+            <div class="text-xs text-slate-400 font-fa">شناسه ارکید</div>
+          </div>
         </a>
-        <a href="https://www.wikidata.org/wiki/Q141622304" target="_blank" rel="noopener noreferrer" class="p-3.5 rounded-xl border border-slate-200/90 bg-white/80 backdrop-blur-sm hover:border-red-400 hover:shadow-sm transition group">
-          <div class="font-semibold text-slate-900 group-hover:text-red-600">Wikidata Entity</div>
-          <div class="text-xs text-slate-400 mt-1">ویکی‌داده</div>
+
+        <!-- Wikidata -->
+        <a href="https://www.wikidata.org/wiki/Q141622304" target="_blank" rel="noopener noreferrer" class="profile-link group hover:border-red-400">
+          <div class="w-10 h-10 rounded-xl bg-red-50 flex items-center justify-center flex-shrink-0 text-[#990000] group-hover:bg-[#990000] group-hover:text-white transition">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M0 4.5v15h3v-15H0zm4.5 0v15h1.5v-15H4.5zm3 0v15h3v-15h-3zm4.5 0v15h1.5v-15H12zm3 0v15h3v-15h-3zm4.5 0v15h1.5v-15h-1.5zm3 0v15H24v-15h-1.5z"/></svg>
+          </div>
+          <div>
+            <div class="font-semibold text-slate-900 text-sm group-hover:text-red-600 transition">Wikidata Entity</div>
+            <div class="text-xs text-slate-400 font-fa">ویکی‌داده</div>
+          </div>
         </a>
-        <a href="https://github.com/ehsan-abedini" target="_blank" rel="noopener noreferrer" class="p-3.5 rounded-xl border border-slate-200/90 bg-white/80 backdrop-blur-sm hover:border-slate-500 hover:shadow-sm transition group">
-          <div class="font-semibold text-slate-900 group-hover:text-slate-800">GitHub</div>
-          <div class="text-xs text-slate-400 mt-1">گیت‌هاب</div>
+
+        <!-- GitHub -->
+        <a href="https://github.com/ehsan-abedini" target="_blank" rel="noopener noreferrer" class="profile-link group hover:border-slate-400">
+          <div class="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center flex-shrink-0 text-slate-800 group-hover:bg-slate-900 group-hover:text-white transition">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          </div>
+          <div>
+            <div class="font-semibold text-slate-900 text-sm group-hover:text-slate-900 transition">GitHub</div>
+            <div class="text-xs text-slate-400 font-fa">گیت‌هاب</div>
+          </div>
         </a>
       </div>
     </section>
 
     <!-- Footer -->
     <footer class="pt-6 pb-4 border-t border-slate-200/80 text-xs text-slate-400 flex flex-col sm:flex-row justify-between items-center gap-2">
-      <p>© Dr. Ehsan Abedini — دانشگاه علوم پزشکی مازندران</p>
-      <p>Hosted on GitHub Pages</p>
+      <p class="font-fa">© Dr. Ehsan Abedini — دانشگاه علوم پزشکی مازندران</p>
+      <p>Academic Homepage • MazUMS</p>
     </footer>
   </main>
 
   <!-- Back to Top Button -->
   <button id="backToTop" class="back-to-top" aria-label="Return to top" title="بازگشت به بالای صفحه">
-    <img src="drea.jpg" alt="Dr. Ehsan Abedini">
+    <img src="drea.jpg" alt="Dr. Ehsan Abedini" class="w-full h-full object-cover">
   </button>
 
-  <!-- JavaScript بهینه‌شده -->
+  <!-- JavaScript -->
   <script>
     const header = document.getElementById('mainHeader');
     const progressBar = document.getElementById('progressBar');
@@ -413,13 +488,13 @@
           const scrollTop = window.scrollY || document.documentElement.scrollTop;
           const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
           
-          // ۱. نوار پیشرفت مطالعه
+          // نوار پیشرفت مطالعه
           if (progressBar && scrollHeight > 0) {
             const progressPercent = (scrollTop / scrollHeight) * 100;
             progressBar.style.width = progressPercent + '%';
           }
 
-          // ۲. جمع شدن هدر شناور
+          // جمع شدن هدر شناور
           if (header) {
             if (!isScrolled && scrollTop > 60) {
               header.classList.add('is-scrolled');
@@ -430,7 +505,7 @@
             }
           }
 
-          // ۳. دکمه بازگشت به بالا
+          // دکمه بازگشت به بالا
           if (backToTopBtn) {
             if (scrollTop > 220) {
               backToTopBtn.classList.add('visible');
