@@ -81,6 +81,7 @@
     :root {
       --font-en: 'Plus Jakarta Sans', sans-serif;
       --font-fa: 'Vazirmatn', sans-serif;
+      --header-offset: 240px; /* مقدار اولیه پیش‌فرض */
     }
 
     body {
@@ -108,25 +109,25 @@
       z-index: 1000;
       box-sizing: border-box;
       
-      background: rgba(255, 255, 255, 0.60);
-      backdrop-filter: blur(12px) saturate(180%);
-      -webkit-backdrop-filter: blur(12px) saturate(180%);
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(14px) saturate(180%);
+      -webkit-backdrop-filter: blur(14px) saturate(180%);
       
       border-radius: 24px;
       border: 1px solid rgba(255, 255, 255, 0.9);
       box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.05), 0 0 0 1px rgba(226, 232, 240, 0.7);
       
       padding: 1.25rem 1.75rem;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: padding 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+                  background 0.3s ease, 
+                  box-shadow 0.3s ease, 
+                  border-radius 0.3s ease;
     }
 
+    /* فاصله خودکار و مصون از مخفی شدن محتوا */
     main {
-      padding-top: 220px !important;
-    }
-    @media (max-width: 767px) {
-      main {
-        padding-top: 290px !important;
-      }
+      padding-top: var(--header-offset);
+      transition: padding-top 0.15s ease-out;
     }
 
     .avatar-wrapper {
@@ -145,9 +146,9 @@
     /* وضعیت جمع‌شده هدر */
     header#mainHeader.is-scrolled {
       padding: 0.6rem 1.25rem;
-      background: rgba(255, 255, 255, 0.55);
-      backdrop-filter: blur(12px) saturate(190%);
-      -webkit-backdrop-filter: blur(12px) saturate(190%);
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(14px) saturate(190%);
+      -webkit-backdrop-filter: blur(14px) saturate(190%);
       box-shadow: 0 12px 30px -4px rgba(15, 23, 42, 0.1), 0 0 0 1px rgba(203, 213, 225, 0.8);
       border-radius: 18px;
     }
@@ -176,11 +177,16 @@
 
     @media (max-width: 767px) {
       header#mainHeader {
-        padding: 1.1rem;
+        padding: 1rem;
       }
       .avatar-wrapper {
         width: 76px;
         height: 76px;
+      }
+      /* بهینه‌سازی فونت بج‌ها در موبایل برای جلوگیری از ۲ خطی شدن بدقواره */
+      #headerBadges span {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.55rem;
       }
       header#mainHeader.is-scrolled {
         flex-direction: row !important;
@@ -482,6 +488,22 @@
     let isScrolled = false;
     let ticking = false;
 
+    // اندازه‌گیری دقیق و هوشمند ارتفاع هدر فقط در وضعیت باز
+    function syncHeaderHeight() {
+      if (header && !header.classList.contains('is-scrolled')) {
+        const headerRect = header.getBoundingClientRect();
+        // فاصله نهایی: فاصله هدر از سقف (14px) + ارتفاع واقعی هدر + 20px مارجین تنفس بصری
+        const totalTopSpace = Math.round(headerRect.height + 14 + 20);
+        document.documentElement.style.setProperty('--header-offset', totalTopSpace + 'px');
+      }
+    }
+
+    // هماهنگ‌سازی اولیه بلافاصله پس از لود شدن کامل دام و فونت‌ها
+    window.addEventListener('DOMContentLoaded', syncHeaderHeight);
+    window.addEventListener('load', syncHeaderHeight);
+    window.addEventListener('resize', syncHeaderHeight);
+
+    // اسکرول لیسنر فوق‌العاده بهینه با requestAnimationFrame
     window.addEventListener('scroll', () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
@@ -496,12 +518,14 @@
 
           // جمع شدن هدر شناور
           if (header) {
-            if (!isScrolled && scrollTop > 60) {
+            if (!isScrolled && scrollTop > 50) {
               header.classList.add('is-scrolled');
               isScrolled = true;
-            } else if (isScrolled && scrollTop < 20) {
+            } else if (isScrolled && scrollTop <= 15) {
               header.classList.remove('is-scrolled');
               isScrolled = false;
+              // وقتی کاربر به بالای صفحه بازگشت، ارتفاع را جهت احتیاط دوباره چک می‌کنیم
+              syncHeaderHeight();
             }
           }
 
