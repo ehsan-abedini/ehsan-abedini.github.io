@@ -81,7 +81,6 @@
     :root {
       --font-en: 'Plus Jakarta Sans', sans-serif;
       --font-fa: 'Vazirmatn', sans-serif;
-      --header-offset: 240px; /* مقدار اولیه پیش‌فرض */
     }
 
     body {
@@ -124,10 +123,9 @@
                   border-radius 0.3s ease;
     }
 
-    /* فاصله خودکار و مصون از مخفی شدن محتوا */
+    /* فاصله تضمینی در دسکتاپ */
     main {
-      padding-top: var(--header-offset);
-      transition: padding-top 0.15s ease-out;
+      padding-top: 240px;
     }
 
     .avatar-wrapper {
@@ -143,7 +141,7 @@
       overflow: hidden;
     }
 
-    /* وضعیت جمع‌شده هدر */
+    /* وضعیت جمع‌شده هدر هنگام اسکرول */
     header#mainHeader.is-scrolled {
       padding: 0.6rem 1.25rem;
       background: rgba(255, 255, 255, 0.75);
@@ -175,18 +173,23 @@
       pointer-events: none;
     }
 
+    /* تنظیمات موبایل و تبلت (زیر 768 پیکسل) */
     @media (max-width: 767px) {
       header#mainHeader {
-        padding: 1rem;
+        padding: 1rem 0.85rem;
       }
       .avatar-wrapper {
-        width: 76px;
-        height: 76px;
+        width: 72px;
+        height: 72px;
       }
-      /* بهینه‌سازی فونت بج‌ها در موبایل برای جلوگیری از ۲ خطی شدن بدقواره */
+      /* بهینه‌سازی ابعاد و فواصل بج‌ها در موبایل */
+      #headerBadges {
+        gap: 6px;
+      }
       #headerBadges span {
-        font-size: 0.7rem;
-        padding: 0.2rem 0.55rem;
+        font-size: 0.72rem;
+        padding: 3px 8px;
+        line-height: 1.3;
       }
       header#mainHeader.is-scrolled {
         flex-direction: row !important;
@@ -197,6 +200,17 @@
       header#mainHeader.is-scrolled .avatar-wrapper {
         width: 40px;
         height: 40px;
+      }
+      /* فاصله ایمن و تضمینی برای خروج کامل About از زیر هدر */
+      main {
+        padding-top: 365px !important;
+      }
+    }
+
+    /* گوشی‌های باریک‌تر (عرض زیر 380 پیکسل مانند آیفون SE یا گلکسی‌های کامپکت) */
+    @media (max-width: 380px) {
+      main {
+        padding-top: 395px !important;
       }
     }
 
@@ -298,6 +312,7 @@
       box-shadow: 0 10px 25px rgba(99, 102, 241, 0.35);
     }
   </style>
+
 </head>
   
 <body class="text-slate-800 antialiased selection:bg-indigo-100 selection:text-indigo-900 min-h-screen">
