@@ -503,50 +503,32 @@
     let isScrolled = false;
     let ticking = false;
 
-    // اندازه‌گیری دقیق و هوشمند ارتفاع هدر فقط در وضعیت باز
-    function syncHeaderHeight() {
-      if (header && !header.classList.contains('is-scrolled')) {
-        const headerRect = header.getBoundingClientRect();
-        // فاصله نهایی: فاصله هدر از سقف (14px) + ارتفاع واقعی هدر + 20px مارجین تنفس بصری
-        const totalTopSpace = Math.round(headerRect.height + 14 + 20);
-        document.documentElement.style.setProperty('--header-offset', totalTopSpace + 'px');
-      }
-    }
-
-    // هماهنگ‌سازی اولیه بلافاصله پس از لود شدن کامل دام و فونت‌ها
-    window.addEventListener('DOMContentLoaded', syncHeaderHeight);
-    window.addEventListener('load', syncHeaderHeight);
-    window.addEventListener('resize', syncHeaderHeight);
-
-    // اسکرول لیسنر فوق‌العاده بهینه با requestAnimationFrame
     window.addEventListener('scroll', () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
           const scrollTop = window.scrollY || document.documentElement.scrollTop;
           const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
           
-          // نوار پیشرفت مطالعه
+          // نوار پیشرفت مطالعه بالای صفحه
           if (progressBar && scrollHeight > 0) {
             const progressPercent = (scrollTop / scrollHeight) * 100;
             progressBar.style.width = progressPercent + '%';
           }
 
-          // جمع شدن هدر شناور
+          // انیمیشن نرم جمع شدن هدر هنگام اسکرول
           if (header) {
-            if (!isScrolled && scrollTop > 50) {
+            if (!isScrolled && scrollTop > 60) {
               header.classList.add('is-scrolled');
               isScrolled = true;
-            } else if (isScrolled && scrollTop <= 15) {
+            } else if (isScrolled && scrollTop < 20) {
               header.classList.remove('is-scrolled');
               isScrolled = false;
-              // وقتی کاربر به بالای صفحه بازگشت، ارتفاع را جهت احتیاط دوباره چک می‌کنیم
-              syncHeaderHeight();
             }
           }
 
-          // دکمه بازگشت به بالا
+          // نمایش / مخفی‌سازی دکمه بازگشت به بالا
           if (backToTopBtn) {
-            if (scrollTop > 220) {
+            if (scrollTop > 250) {
               backToTopBtn.classList.add('visible');
             } else {
               backToTopBtn.classList.remove('visible');
@@ -559,6 +541,7 @@
       }
     }, { passive: true });
 
+    // عملکرد دکمه بازگشت به بالا با اسکرول نرم
     if (backToTopBtn) {
       backToTopBtn.addEventListener('click', () => {
         window.scrollTo({
