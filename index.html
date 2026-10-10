@@ -4,18 +4,28 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f7f8fc">
-  <title>Dr. Ehsan Abedini | دکتر احسان عابدینی</title>
-  <meta name="description" content="Official academic homepage of Dr. Ehsan Abedini, researcher in health management and policy at Mazandaran University of Medical Sciences.">
+  <meta name="author" content="Ehsan Abedini">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <title>Dr. Ehsan Abedini | Health Management &amp; Policy Research</title>
+  <meta name="description" content="Research profile of Dr. Ehsan Abedini: health management and policy, health data governance, quantitative methods, digital health, and hospital performance.">
   <link rel="canonical" href="https://ehsan-abedini.github.io/">
   <meta property="og:type" content="profile">
-  <meta property="og:title" content="Dr. Ehsan Abedini | دکتر احسان عابدینی">
-  <meta property="og:description" content="Research in health management and policy, health data governance, quantitative methods, and digital health.">
+  <meta property="og:site_name" content="Dr. Ehsan Abedini — Academic Homepage">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="fa_IR">
+  <meta property="og:title" content="Dr. Ehsan Abedini | Health Management &amp; Policy Research">
+  <meta property="og:description" content="Research in health management and policy, health data governance, quantitative methods, digital health, and hospital performance.">
   <meta property="og:url" content="https://ehsan-abedini.github.io/">
   <meta property="og:image" content="https://ehsan-abedini.github.io/drea.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="844">
+  <meta property="og:image:height" content="844">
+  <meta property="og:image:alt" content="Portrait of Dr. Ehsan Abedini">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Dr. Ehsan Abedini | دکتر احسان عابدینی">
-  <meta name="twitter:description" content="Researcher in Health Management and Policy.">
+  <meta name="twitter:title" content="Dr. Ehsan Abedini | Health Management &amp; Policy Research">
+  <meta name="twitter:description" content="Academic profile and selected publications of Dr. Ehsan Abedini.">
   <meta name="twitter:image" content="https://ehsan-abedini.github.io/drea.jpg">
+  <meta name="twitter:image:alt" content="Portrait of Dr. Ehsan Abedini">
   <link rel="icon" href="drea.jpg" type="image/jpeg">
   <link rel="apple-touch-icon" href="drea.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -46,7 +56,9 @@
         #f7f8fc;
       line-height: 1.65;
     }
-    a { color: var(--brand); text-underline-offset: 3px; }
+    a { color: var(--brand); text-underline-offset: 3px; overflow-wrap: anywhere; }
+    img { max-width: 100%; }
+    section[id], div[id] { scroll-margin-top: 115px; }
     a:hover { color: var(--brand-dark); }
     a:focus-visible, button:focus-visible { outline: 3px solid #f59e0b; outline-offset: 4px; border-radius: 8px; }
     .fa, [lang="fa"] { font-family: "Vazirmatn", sans-serif; }
@@ -58,7 +70,7 @@
     .site-header {
       position: sticky; top: 10px; z-index: 1000; width: min(calc(100% - 28px), var(--max));
       margin: 10px auto 0; border: 1px solid rgba(220,227,239,.9); border-radius: 22px;
-      background: rgba(255,255,255,.55); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      background: rgba(255,255,255,.88); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
       box-shadow: 0 8px 28px rgba(27,39,74,.07);
     }
     .header-inner { display: flex; align-items: center; gap: 18px; padding: 17px 22px; }
@@ -73,7 +85,7 @@
     .badge { display: inline-flex; align-items: center; gap: 7px; padding: 5px 10px; border-radius: 999px; border: 1px solid #dfe4f4; background: #f3f5ff; color: #343f8f; font-size: .76rem; font-weight: 700; }
     .badge.teal { color: #086c75; border-color: #cbe9e9; background: #effafa; }
     nav { display: flex; flex-wrap: wrap; gap: 6px; border-top: 1px solid #edf0f6; padding: 8px 16px; }
-    nav a { text-decoration: none; color: #4b566c; font-size: .83rem; font-weight: 700; padding: 6px 10px; border-radius: 9px; }
+    nav a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; color: #4b566c; font-size: .83rem; font-weight: 700; padding: 8px 10px; border-radius: 9px; }
     nav a:hover { background: #f0f3ff; color: var(--brand); }
     main { width: min(calc(100% - 32px), var(--max)); margin: 28px auto 0; }
     .hero { display: grid; grid-template-columns: 1.45fr .75fr; gap: 18px; align-items: stretch; }
@@ -82,8 +94,15 @@
     h2 { margin: 0 0 14px; font-size: 1.28rem; line-height: 1.35; letter-spacing: -.02em; }
     h3 { margin: 0 0 7px; font-size: 1rem; line-height: 1.4; }
     p { margin: 0 0 12px; }
-    .lead { font-size: 1.02rem; color: #39445a; }
+    .lead {
+      font-size: 1.02rem; color: #39445a; line-height: 1.8;
+      text-align: justify; text-justify: inter-word; text-align-last: start;
+    }
     .fa-card { margin-top: 15px; border-top: 1px solid var(--line); padding-top: 15px; }
+    .fa-card p {
+      line-height: 1.95; text-align: justify; text-justify: inter-word;
+      text-align-last: start;
+    }
     .quick-links { display: grid; gap: 10px; }
     .quick-link { display: flex; gap: 12px; align-items: center; padding: 12px 13px; border: 1px solid var(--line); border-radius: 14px; background: white; color: var(--ink); text-decoration: none; transition: transform .18s ease, border-color .18s ease; }
     .quick-link:hover { transform: translateY(-2px); border-color: #aeb9e9; }
@@ -106,12 +125,13 @@
     .editorial-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
     .editorial-item { border: 1px solid var(--line); border-radius: 15px; background: white; padding: 18px; }
     .editorial-item p { color: var(--muted); font-size: .86rem; margin: 0; }
+    .editorial-link { margin-top: 10px !important; }
     .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
     .profile { border: 1px solid var(--line); border-radius: 14px; background: white; padding: 14px; text-decoration: none; display: block; }
     .profile strong { display: block; color: var(--ink); font-size: .88rem; }
     .profile span { display: block; color: var(--muted); font-size: .76rem; margin-top: 2px; }
     .cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
-    .button { display: inline-flex; align-items: center; justify-content: center; min-height: 42px; padding: 10px 15px; border: 1px solid var(--brand); border-radius: 11px; background: var(--brand); color: white; text-decoration: none; font-weight: 700; font-size: .88rem; }
+    .button { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 10px 15px; border: 1px solid var(--brand); border-radius: 11px; background: var(--brand); color: white; text-decoration: none; font-weight: 700; font-size: .88rem; }
     .button:hover { background: var(--brand-dark); color: white; }
     .button.secondary { background: white; color: var(--brand); }
     .note { padding: 13px 15px; border-radius: 12px; background: #f5f7fb; border: 1px dashed #cbd4e4; color: #566176; font-size: .82rem; }
@@ -119,17 +139,24 @@
     .back-top { position: fixed; right: 20px; bottom: 20px; width: 44px; height: 44px; border: 1px solid #cdd5ea; border-radius: 50%; background: white; color: var(--brand); box-shadow: 0 8px 24px rgba(27,39,74,.15); font-size: 1.25rem; cursor: pointer; opacity: 0; visibility: hidden; transform: translateY(8px); transition: opacity .2s ease, transform .2s ease, visibility .2s; z-index: 999; }
     .back-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
     @media (max-width: 760px) {
+      /* Keep the tall identity header from consuming the mobile viewport. */
+      .site-header { position: relative; top: auto; }
+      html { scroll-padding-top: 16px; }
+      section[id], div[id] { scroll-margin-top: 16px; }
       .header-inner { align-items: flex-start; padding: 14px; gap: 13px; }
       .avatar { width: 62px; height: 62px; }
       .badges { margin-top: 8px; }
-      nav { overflow-x: auto; flex-wrap: nowrap; }
-      nav a { white-space: nowrap; }
+      nav { overflow: visible; flex-wrap: wrap; gap: 4px; padding: 8px 10px; }
+      nav a { white-space: normal; flex: 0 1 auto; padding: 8px 9px; }
+      nav:focus-within { outline: 2px solid #aeb9e9; outline-offset: 2px; }
       .hero { grid-template-columns: 1fr; }
       .interest-grid { grid-template-columns: repeat(2, 1fr); }
       .profile-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 480px) {
       main { width: min(calc(100% - 22px), var(--max)); margin-top: 16px; }
+      .quick-link, .profile { min-height: 48px; }
+      .back-top { right: 12px; bottom: 12px; width: 46px; height: 46px; }
       .site-header { width: calc(100% - 16px); margin-top: 8px; border-radius: 17px; }
       .header-inner { gap: 10px; padding: 12px; }
       .avatar { width: 52px; height: 52px; }
@@ -150,35 +177,68 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Ehsan Abedini",
-    "alternateName": ["Dr. Ehsan Abedini", "دکتر احسان عابدینی", "احسان عابدینی"],
-    "honorificPrefix": "Dr.",
-    "url": "https://ehsan-abedini.github.io/",
-    "image": "https://ehsan-abedini.github.io/drea.jpg",
-    "jobTitle": "Researcher in Health Management and Policy",
-    "worksFor": {
-      "@type": "Organization",
-      "name": "Mazandaran University of Medical Sciences",
-      "alternateName": "دانشگاه علوم پزشکی مازندران"
-    },
-    "knowsAbout": [
-      "Health Data Governance",
-      "Health Management and Policy",
-      "Structural Equation Modeling",
-      "Statistical Computing with R",
-      "Digital Health",
-      "Health Information Systems",
-      "Urban Primary Healthcare",
-      "Hospital Cost-Benefit Analysis"
-    ],
-    "sameAs": [
-      "https://scholar.google.com/citations?user=ncZmq8oAAAAJ",
-      "https://orcid.org/0000-0003-3767-0780",
-      "https://elmnet.ir/eid/d-0053-9819",
-      "https://www.wikidata.org/wiki/Q141622304",
-      "https://www.researchgate.net/profile/Ehsan-Abedini",
-      "https://github.com/ehsan-abedini"
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://ehsan-abedini.github.io/#website",
+        "url": "https://ehsan-abedini.github.io/",
+        "name": "Dr. Ehsan Abedini — Academic Homepage",
+        "inLanguage": ["en", "fa"],
+        "publisher": { "@id": "https://ehsan-abedini.github.io/#person" }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://ehsan-abedini.github.io/#webpage",
+        "url": "https://ehsan-abedini.github.io/",
+        "name": "Dr. Ehsan Abedini | Health Management & Policy Research",
+        "description": "Research profile of Dr. Ehsan Abedini: health management and policy, health data governance, quantitative methods, digital health, and hospital performance.",
+        "inLanguage": ["en", "fa"],
+        "isPartOf": { "@id": "https://ehsan-abedini.github.io/#website" },
+        "mainEntity": { "@id": "https://ehsan-abedini.github.io/#person" }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://ehsan-abedini.github.io/#organization",
+        "name": "Mazandaran University of Medical Sciences",
+        "alternateName": "دانشگاه علوم پزشکی مازندران"
+      },
+      {
+        "@type": "ResearchOrganization",
+        "@id": "https://ehsan-abedini.github.io/#research-center",
+        "name": "Health Sciences Research Center",
+        "parentOrganization": { "@id": "https://ehsan-abedini.github.io/#organization" }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://ehsan-abedini.github.io/#person",
+        "name": "Ehsan Abedini",
+        "alternateName": ["Dr. Ehsan Abedini", "دکتر احسان عابدینی", "احسان عابدینی"],
+        "honorificPrefix": "Dr.",
+        "url": "https://ehsan-abedini.github.io/",
+        "image": "https://ehsan-abedini.github.io/drea.jpg",
+        "jobTitle": "Researcher in Health Management and Policy",
+        "affiliation": { "@id": "https://ehsan-abedini.github.io/#research-center" },
+        "worksFor": { "@id": "https://ehsan-abedini.github.io/#organization" },
+        "knowsAbout": [
+          "Health Data Governance",
+          "Health Management and Policy",
+          "Structural Equation Modeling",
+          "Statistical Computing with R",
+          "Digital Health",
+          "Health Information Systems",
+          "Urban Primary Healthcare",
+          "Hospital Cost-Benefit Analysis"
+        ],
+        "sameAs": [
+          "https://scholar.google.com/citations?user=ncZmq8oAAAAJ",
+          "https://orcid.org/0000-0003-3767-0780",
+          "https://elmnet.ir/eid/d-0053-9819",
+          "https://www.wikidata.org/wiki/Q141622304",
+          "https://www.researchgate.net/profile/Ehsan-Abedini",
+          "https://github.com/ehsan-abedini"
+        ],
+        "mainEntityOfPage": { "@id": "https://ehsan-abedini.github.io/#webpage" }
+      }
     ]
   }
   </script>
@@ -314,7 +374,6 @@
           <span class="status">Hospital performance · Efficiency analysis</span>
         </article>
       </div>
-      <p class="note" style="margin-top:12px">Selection rationale: these six papers provide breadth across the research profile rather than ranking works by citation count alone. Bibliographic details and links were cross-checked against PubMed, publisher pages, or an article record. Before publication, please confirm preferred citation style and author-name spelling against the final publisher versions.</p>
     </section>
 
     <section class="panel section" id="editorial">
@@ -325,11 +384,7 @@
         <article class="editorial-item">
           <h3>Academic Editor · PLOS ONE</h3>
           <p>Editorial service in scholarly publishing. For journal scope, current role details, and editorial records, refer to the journal's official sources.</p>
-          <p style="margin-top:10px"><a href="https://journals.plos.org/plosone/" target="_blank" rel="noopener noreferrer">PLOS ONE ↗</a></p>
-        </article>
-        <article class="editorial-item">
-          <h3>Editorial role · Medical Science</h3>
-          <p>The journal's exact official title and the current editorial appointment should be verified and linked here before adding further details.</p>
+          <p class="editorial-link"><a href="https://journals.plos.org/plosone/" target="_blank" rel="noopener noreferrer">PLOS ONE ↗</a></p>
         </article>
       </div>
     </section>
