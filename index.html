@@ -123,10 +123,58 @@
     .publication { padding: 17px 18px; border: 1px solid var(--line); background: white; border-radius: 15px; }
     .publication p { color: var(--muted); font-size: .88rem; margin: 0; }
     .publication .status { display: inline-block; margin-top: 10px; padding: 3px 8px; border-radius: 7px; background: #f3f5fa; color: #566176; font-size: .72rem; }
-    .editorial-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    .editorial-item { border: 1px solid var(--line); border-radius: 15px; background: white; padding: 18px; }
-    .editorial-item p { color: var(--muted); font-size: .86rem; margin: 0; }
-    .editorial-link { margin-top: 10px !important; }
+    .editorial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-top: 1rem; }
+.editorial-card {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  border-radius: 16px;
+  padding: 1.25rem;
+  backdrop-filter: blur(12px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.editorial-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+}
+
+.role-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #0284c7;
+  background: rgba(2, 132, 199, 0.08);
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.journal-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 0.5rem 0;
+}
+
+.role-desc {
+  font-size: 0.875rem;
+  color: #475569;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.journal-link {
+  font-size: 0.85rem;
+  color: #2563eb;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 500;
+}
     .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
     .profile { border: 1px solid var(--line); border-radius: 14px; background: white; padding: 14px; text-decoration: none; display: block; }
     .profile strong { display: block; color: var(--ink); font-size: .88rem; }
@@ -410,18 +458,41 @@
       </div>
     </section>
 
-    <section class="panel section" id="editorial">
-      <div class="section-heading">
-        <div><p class="eyebrow">Academic service</p><h2>Editorial and professional activities</h2></div>
+<section class="academic-service-section">
+  <div class="service-kicker">ACADEMIC SERVICE</div>
+  <h2 class="service-heading">Editorial and professional activities</h2>
+
+  <div class="editorial-portfolio-grid">
+    <!-- Card 1: PLOS ONE -->
+    <article class="editorial-card">
+      <div class="editorial-badge">Academic Editor</div>
+      <h3 class="editorial-journal">PLOS ONE</h3>
+      <p class="editorial-summary">
+        Handling peer-review workflows and editorial decisions for interdisciplinary research, quantitative health studies, and health system evaluations.
+      </p>
+      <div class="editorial-footer">
+        <a href="https://journals.plos.org/plosone/" target="_blank" rel="noopener noreferrer" class="journal-official-link">
+          PLOS ONE Profile ↗
+        </a>
       </div>
-      <div class="editorial-grid">
-        <article class="editorial-item">
-          <h3>Academic Editor · PLOS ONE</h3>
-          <p>Editorial service in scholarly publishing. For journal scope, current role details, and editorial records, refer to the journal's official sources.</p>
-          <p class="editorial-link"><a href="https://journals.plos.org/plosone/" target="_blank" rel="noopener noreferrer">PLOS ONE ↗</a></p>
-        </article>
+    </article>
+
+    <!-- Card 2: Medical Science -->
+    <article class="editorial-card">
+      <div class="editorial-badge">Editor</div>
+      <h3 class="editorial-journal">Medical Science</h3>
+      <p class="editorial-summary">
+        Editorial governance and evaluation of scholarly submissions specializing in healthcare services, health policy, and healthcare management.
+      </p>
+      <div class="editorial-footer">
+        <!-- آدرس صفحه ادیتوریال ژورنال Medical Science را در href قرار دهید -->
+        <a href="https://www.discoveryjournals.org/medicalscience/editorial.htm" target="_blank" rel="noopener noreferrer" class="journal-official-link">
+          Editorial Board Record ↗
+        </a>
       </div>
-    </section>
+    </article>
+  </div>
+</section>
 
     <section class="panel section" id="profiles">
       <div class="section-heading"><div><p class="eyebrow">Research identity</p><h2>Profiles &amp; repositories</h2></div></div>
