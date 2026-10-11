@@ -123,58 +123,74 @@
     .publication { padding: 17px 18px; border: 1px solid var(--line); background: white; border-radius: 15px; }
     .publication p { color: var(--muted); font-size: .88rem; margin: 0; }
     .publication .status { display: inline-block; margin-top: 10px; padding: 3px 8px; border-radius: 7px; background: #f3f5fa; color: #566176; font-size: .72rem; }
-    .editorial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-top: 1rem; }
+    .editorial-portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.25rem;
+}
+
 .editorial-card {
-  background: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(226, 232, 240, 0.8);
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(226, 232, 240, 0.85);
   border-radius: 16px;
-  padding: 1.25rem;
-  backdrop-filter: blur(12px);
+  padding: 1.5rem;
+  backdrop-filter: blur(10px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.03);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .editorial-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+  transform: translateY(-3px);
+  border-color: rgba(148, 163, 184, 0.5);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.06);
 }
 
-.role-badge {
-  display: inline-block;
+.editorial-badge {
+  align-self: flex-start;
   font-size: 0.75rem;
-  font-weight: 600;
-  color: #0284c7;
-  background: rgba(2, 132, 199, 0.08);
-  padding: 0.2rem 0.6rem;
-  border-radius: 6px;
-  margin-bottom: 0.5rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.04em;
+  color: #0284c7;
+  background-color: rgba(2, 132, 199, 0.08);
+  border: 1px solid rgba(2, 132, 199, 0.18);
+  padding: 0.25rem 0.65rem;
+  border-radius: 20px;
+  margin-bottom: 0.75rem;
 }
 
-.journal-name {
-  font-size: 1.1rem;
+.editorial-journal {
+  font-size: 1.2rem;
   font-weight: 700;
   color: #0f172a;
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 0.6rem 0;
 }
 
-.role-desc {
+.editorial-summary {
   font-size: 0.875rem;
+  line-height: 1.6;
   color: #475569;
-  line-height: 1.5;
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
+  flex-grow: 1;
 }
 
-.journal-link {
+.journal-official-link {
   font-size: 0.85rem;
+  font-weight: 600;
   color: #2563eb;
   text-decoration: underline;
-  text-underline-offset: 3px;
-  font-weight: 500;
+  text-underline-offset: 4px;
+  transition: color 0.15s ease;
 }
+
+.journal-official-link:hover {
+  color: #1d4ed8;
+}
+
     .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
     .profile { border: 1px solid var(--line); border-radius: 14px; background: white; padding: 14px; text-decoration: none; display: block; }
     .profile strong { display: block; color: var(--ink); font-size: .88rem; }
