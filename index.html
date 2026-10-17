@@ -217,35 +217,41 @@
         width: 0;
         background: linear-gradient(90deg, #3949ab, #078b9a);
       }
-      .site-header {
-        position: sticky;
-        top: 10px;
-        z-index: 1000;
-        width: min(calc(100% - 28px), var(--max));
-        margin: 10px auto 0;
-        border: 1px solid rgba(220, 227, 239, 0.9);
-        border-radius: 22px;
-        background: rgba(255, 255, 255, 0.55);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-        box-shadow: 0 8px 28px rgba(27, 39, 74, 0.07);
-      }
-      .header-inner {
-        display: flex;
-        align-items: center;
-        gap: 18px;
-        padding: 17px 22px;
-      }
-      .avatar {
-        width: 78px;
-        height: 78px;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 3px solid white;
-        box-shadow: 0 0 0 2px #dce3ff;
-        flex: 0 0 auto;
-        background: #e8ecf7;
-      }
+.site-header {
+  position: sticky;
+  top: 10px;
+  z-index: 1000;
+  width: min(calc(100% - 28px), var(--max));
+  margin: 10px auto 0;
+  border: 1px solid rgba(220, 227, 239, 0.9);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 8px 28px rgba(27, 39, 74, 0.07);
+
+  /* --- متغیرهای معماری تراز (Zero Magic Numbers) --- */
+  --header-pad-x: 22px;
+  --avatar-size: 78px;
+  --header-gap: 18px;
+  --content-indent: calc(var(--header-pad-x) + var(--avatar-size) + var(--header-gap));
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: var(--header-gap);
+  padding: 17px var(--header-pad-x);
+}
+.avatar {
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid white;
+  box-shadow: 0 0 0 2px #dce3ff;
+  flex: 0 0 auto;
+  background: #e8ecf7;
+}
       .identity {
         flex: 1;
         min-width: 0;
@@ -308,13 +314,13 @@
       }
 
       /* Navigation Bar & Scrollspy Active States */
-      nav {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 6px;
-        border-top: 1px solid #edf0f6;
-        padding: 8px 16px;
-      }
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  border-top: 1px solid #edf0f6;
+  padding: 8px var(--header-pad-x) 8px var(--content-indent);
+}
       nav a {
         display: inline-flex;
         align-items: center;
