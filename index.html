@@ -1783,7 +1783,11 @@
           if (progress)
             progress.style.width = `${max > 0 ? Math.min(100, (y / max) * 100) : 0}%`;
           if (header) {
-            header.classList.toggle('is-condensed', y > 120);
+            if (y > 140) {
+              header.classList.add('is-condensed');
+            } else if (y < 60) {
+              header.classList.remove('is-condensed');
+            }
           }
           if (backTop) backTop.classList.toggle("visible", y > 400);
 
