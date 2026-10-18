@@ -465,6 +465,58 @@
           0 2px 6px rgba(15, 23, 42, 0.04),
           inset 0 0 0 1px rgba(37, 99, 235, 0.2);
       }
+/* ۱. انیمیشن نرم برای هدر و اجزای داخلی */
+.site-header,
+.site-header .avatar,
+.site-header h1,
+.site-header .identity,
+.site-header nav {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ۲. حالت فشرده شده (هنگام اسکرول در main) */
+.site-header.is-condensed {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  box-shadow: 0 8px 30px rgba(22, 31, 29, 0.12); /* سایه کمی متراکم‌تر */
+}
+
+/* کوچک‌تر شدن پدینگ کانتینر اصلی هدر */
+.site-header.is-condensed .header-inner {
+  padding: 8px var(--header-pad-x);
+  gap: 12px;
+}
+
+/* کوچک شدن ملایم آواتار */
+.site-header.is-condensed .avatar {
+  width: 42px;
+  height: 42px;
+}
+
+/* عنوان در یک خط و اندکی ظریف‌تر */
+.site-header.is-condensed h1 {
+  font-size: 1.15rem;
+  margin: 0;
+  white-space: nowrap;
+}
+
+/* پنهان کردن محتوای فرعی (نام فارسی، سمت، افیلیشن و بج‌ها) با نرمی */
+.site-header.is-condensed .name-fa,
+.site-header.is-condensed .role,
+.site-header.is-condensed .affiliation,
+.site-header.is-condensed .badges {
+  opacity: 0;
+  max-height: 0;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* هدایت نوار منو به سمت بالا در فضای خالی ایجاد شده */
+.site-header.is-condensed nav {
+  margin-top: 4px;
+}
 
       /* Main Wrapper */
       main {
@@ -1720,6 +1772,7 @@
       (() => {
         // 1. Progress Bar & Back-to-Top Handler
         const progress = document.getElementById("progressBar");
+        const header = document.querySelector('.site-header');
         const backTop = document.getElementById("backToTop");
         let ticking = false;
 
@@ -1729,6 +1782,9 @@
             document.documentElement.scrollHeight - window.innerHeight;
           if (progress)
             progress.style.width = `${max > 0 ? Math.min(100, (y / max) * 100) : 0}%`;
+          if (header) {
+            header.classList.toggle('is-condensed', y > 120);
+          }
           if (backTop) backTop.classList.toggle("visible", y > 400);
 
           if (max > 0 && y >= max - 20) {
