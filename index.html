@@ -467,33 +467,31 @@
       }
       
       /* =========================================================
-         Header: Condensed / Shrink Mode (چیدمان افقی یک‌پارچه)
+         Header: Condensed / Shrink Mode (Center-Aligned Navbar)
          ========================================================= */
       .site-header {
-        transition: padding 0.25s ease, box-shadow 0.25s ease;
+        transition: padding 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
       }
 
       .site-header.is-condensed {
-        padding-top: 10px;
-        padding-bottom: 10px;
-        box-shadow: 0 8px 30px rgba(22, 31, 29, 0.12);
-      }
-
-      /* وقتی هدر فشرده است، محتوای درون آن به صورت افقی کنار هم می‌چینیم */
-      .site-header.is-condensed .header-inner, /* اگر کانتینر داخلی دارید */
-      .site-header.is-condensed {
+        padding-top: 8px;
+        padding-bottom: 8px;
+        box-shadow: 0 8px 32px rgba(22, 31, 29, 0.12);
         display: flex;
         align-items: center;
         justify-content: space-between;
-        flex-wrap: nowrap;
       }
 
-      /* تنظیم بخش هویت (آواتار و h1 در یک خط) */
+      /* هویت فشرده در سمت چپ */
+      .site-header.is-condensed .header-inner {
+        padding: 0 !important;
+        gap: 12px;
+      }
+
       .site-header.is-condensed .identity {
         display: flex;
         align-items: center;
-        gap: 14px;
-        margin-bottom: 0 !important;
+        margin: 0;
       }
 
       .site-header .avatar {
@@ -501,8 +499,8 @@
       }
 
       .site-header.is-condensed .avatar {
-        width: 40px;
-        height: 40px;
+        width: 38px;
+        height: 38px;
       }
 
       .site-header h1 {
@@ -511,30 +509,30 @@
       }
 
       .site-header.is-condensed h1 {
-        font-size: 1.1rem;
+        font-size: 1.05rem;
         white-space: nowrap;
       }
 
-      /* مخفی‌سازی متون اضافی در حالت فشرده */
+      /* مخفی‌سازی کامل متون ثانویه */
       .site-header.is-condensed .name-fa,
       .site-header.is-condensed .role,
       .site-header.is-condensed .affiliation,
       .site-header.is-condensed .badges {
-        display: none !important; /* حذف کامل از جریان رندر برای جلوگیری از اشغال فضا */
+        display: none !important;
       }
 
-      /* آوردن ناوبری (nav) در کنار آواتار و نام */
+      /* ناوبری: مرکز‌چین و شناور در محور وسط */
       .site-header.is-condensed nav {
-        margin-top: 0 !important;
+        margin: 0 auto !important; /* وسط‌چین کردن کامل دکمه‌ها */
+        padding: 0 !important;
         border-top: none !important;
-        padding-top: 0 !important;
         display: flex;
         gap: 6px;
       }
 
       .site-header.is-condensed nav a {
-        padding: 6px 12px;
-        font-size: 0.85rem;
+        padding: 5px 12px;
+        font-size: 0.82rem;
       }
 
       /* Main Wrapper */
@@ -1802,7 +1800,7 @@
           if (progress)
             progress.style.width = `${max > 0 ? Math.min(100, (y / max) * 100) : 0}%`;
           if (header) {
-            if (y > 150) {
+            if (y > 180) {
               header.classList.add('is-condensed');
             } else if (y < 20) {
               header.classList.remove('is-condensed');
