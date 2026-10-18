@@ -465,17 +465,35 @@
           0 2px 6px rgba(15, 23, 42, 0.04),
           inset 0 0 0 1px rgba(37, 99, 235, 0.2);
       }
+      
       /* =========================================================
-         Header: Condensed / Shrink Mode (نسخه اصلاح‌شده بدون لرزش)
+         Header: Condensed / Shrink Mode (چیدمان افقی یک‌پارچه)
          ========================================================= */
       .site-header {
         transition: padding 0.25s ease, box-shadow 0.25s ease;
       }
 
       .site-header.is-condensed {
-        padding-top: 6px;
-        padding-bottom: 6px;
+        padding-top: 10px;
+        padding-bottom: 10px;
         box-shadow: 0 8px 30px rgba(22, 31, 29, 0.12);
+      }
+
+      /* وقتی هدر فشرده است، محتوای درون آن به صورت افقی کنار هم می‌چینیم */
+      .site-header.is-condensed .header-inner, /* اگر کانتینر داخلی دارید */
+      .site-header.is-condensed {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+      }
+
+      /* تنظیم بخش هویت (آواتار و h1 در یک خط) */
+      .site-header.is-condensed .identity {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 0 !important;
       }
 
       .site-header .avatar {
@@ -483,40 +501,40 @@
       }
 
       .site-header.is-condensed .avatar {
-        width: 44px;
-        height: 44px;
+        width: 40px;
+        height: 40px;
       }
 
       .site-header h1 {
         transition: font-size 0.25s ease;
-      }
-
-      .site-header.is-condensed h1 {
-        font-size: 1.15rem;
         margin: 0;
       }
 
-      /* مخفی‌سازی بسیار تمیز المان‌های اضافی با انیمیشن ملایم */
-      .site-header .name-fa,
-      .site-header .role,
-      .site-header .affiliation,
-      .site-header .badges {
-        transition: opacity 0.2s ease, max-height 0.25s ease;
-        max-height: 90px;
-        overflow: hidden;
+      .site-header.is-condensed h1 {
+        font-size: 1.1rem;
+        white-space: nowrap;
       }
 
+      /* مخفی‌سازی متون اضافی در حالت فشرده */
       .site-header.is-condensed .name-fa,
       .site-header.is-condensed .role,
       .site-header.is-condensed .affiliation,
       .site-header.is-condensed .badges {
-        opacity: 0;
-        max-height: 0;
+        display: none !important; /* حذف کامل از جریان رندر برای جلوگیری از اشغال فضا */
+      }
+
+      /* آوردن ناوبری (nav) در کنار آواتار و نام */
+      .site-header.is-condensed nav {
         margin-top: 0 !important;
-        margin-bottom: 0 !important;
+        border-top: none !important;
         padding-top: 0 !important;
-        padding-bottom: 0 !important;
-        pointer-events: none;
+        display: flex;
+        gap: 6px;
+      }
+
+      .site-header.is-condensed nav a {
+        padding: 6px 12px;
+        font-size: 0.85rem;
       }
 
       /* Main Wrapper */
