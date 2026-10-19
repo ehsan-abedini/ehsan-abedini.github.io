@@ -326,63 +326,122 @@
           </div>
         </section>
 
-        <aside
-          class="panel"
-          aria-labelledby="connect-heading"
-        >
-          <span class="eyebrow">Find me online</span>
-          <h2 id="connect-heading">Academic profiles</h2>
-          <div class="quick-links">
-            <a
-              class="quick-link"
-              href="https://orcid.org/0000-0003-3767-0780"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span class="link-icon">iD</span>
-              <span>
-                <strong>ORCID</strong>
-                <small>Persistent researcher identifier</small>
-              </span>
-            </a>
-            <a
-              class="quick-link"
-              href="https://scholar.google.com/citations?user=ncZmq8oAAAAJ"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span class="link-icon">GS</span>
-              <span>
-                <strong>Google Scholar</strong>
-                <small>Publications and citations</small>
-              </span>
-            </a>
-            <a
-              class="quick-link"
-              href="https://www.researchgate.net/profile/Ehsan-Abedini"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span class="link-icon">RG</span>
-              <span>
-                <strong>ResearchGate</strong>
-                <small>Research network</small>
-              </span>
-            </a>
-            <a
-              class="quick-link"
-              href="https://github.com/ehsan-abedini"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span class="link-icon">GH</span>
-              <span>
-                <strong>GitHub</strong>
-                <small>Code and technical work</small>
-              </span>
-            </a>
-          </div>
-        </aside>
+<aside class="panel research-lab-panel" aria-labelledby="lab-heading">
+  <!-- هدر جعبه‌ابزار پژوهشی -->
+  <div class="lab-header">
+    <span class="eyebrow">Interactive Research Micro-Lab</span>
+    <h2 id="lab-heading">Quantitative Toolkit</h2>
+  </div>
+
+  <!-- نوار تب‌های ماژولار (با قابلیت اسکرول افقی نرم در موبایل) -->
+  <div class="lab-tablist" role="tablist" aria-label="Research Tools">
+    <button class="lab-tab is-active" role="tab" id="tab-pabon" aria-selected="true" aria-controls="panel-pabon" tabindex="0">
+      <span class="tab-badge">01</span>
+      <span class="tab-label">Pabon Lasso</span>
+    </button>
+    <button class="lab-tab" role="tab" id="tab-power" aria-selected="false" aria-controls="panel-power" tabindex="-1">
+      <span class="tab-badge">02</span>
+      <span class="tab-label">SEM Power</span>
+    </button>
+    <button class="lab-tab" role="tab" id="tab-cea" aria-selected="false" aria-controls="panel-cea" tabindex="-1">
+      <span class="tab-badge">03</span>
+      <span class="tab-label">HEOR CEA</span>
+    </button>
+    <button class="lab-tab" role="tab" id="tab-smd" aria-selected="false" aria-controls="panel-smd" tabindex="-1">
+      <span class="tab-badge">04</span>
+      <span class="tab-label">Cohort SMD</span>
+    </button>
+    <button class="lab-tab" role="tab" id="tab-crave" aria-selected="false" aria-controls="panel-crave" tabindex="-1">
+      <span class="tab-badge">05</span>
+      <span class="tab-label">CR &amp; AVE</span>
+    </button>
+    <button class="lab-tab" role="tab" id="tab-meta" aria-selected="false" aria-controls="panel-meta" tabindex="-1">
+      <span class="tab-badge">06</span>
+      <span class="tab-label">Forest Plot</span>
+    </button>
+  </div>
+
+  <!-- کانتینر پنل‌های ۶ گانه (جایگاه استقرار ابزارها) -->
+  <div class="lab-panels-container">
+    
+    <!-- پنل ۱: ارزیابی کارایی پابان لاسو (آماده تعبیه موتور گرافیکی) -->
+    <div class="lab-panel is-active" role="tabpanel" id="panel-pabon" aria-labelledby="tab-pabon">
+      <div class="tool-placeholder">
+        <div class="tool-meta">
+          <span class="tool-tag">Hospital Operations</span>
+          <span class="tool-version">v1.0 (Live)</span>
+        </div>
+        <h3 class="tool-title">Pabon Lasso Quadrant Engine</h3>
+        <p class="tool-desc">Hospital performance evaluation via BOR, ALS, and BTR indices with live quadrant mapping.</p>
+        <div id="pabon-lasso-mount-point" class="tool-canvas-slot">
+          <!-- موتور گجت ۱ در گام بعد اینجا سوار می‌شود -->
+        </div>
+      </div>
+    </div>
+
+    <!-- پنل ۲: حجم نمونه و توان SEM -->
+    <div class="lab-panel" role="tabpanel" id="panel-power" aria-labelledby="tab-power" hidden>
+      <div class="tool-placeholder">
+        <div class="tool-meta">
+          <span class="tool-tag">Psychometrics &amp; SEM</span>
+        </div>
+        <h3 class="tool-title">Questionnaire &amp; SEM Sample Sizer</h3>
+        <p class="tool-desc">Item-to-sample ratios (5:1, 10:1) and RMSEA-driven power simulations with APA report text.</p>
+        <div id="sem-power-mount-point" class="tool-canvas-slot"></div>
+      </div>
+    </div>
+
+    <!-- پنل ۳: تحلیل هزینه-اثربخشی سلامت -->
+    <div class="lab-panel" role="tabpanel" id="panel-cea" aria-labelledby="tab-cea" hidden>
+      <div class="tool-placeholder">
+        <div class="tool-meta">
+          <span class="tool-tag">Health Economics</span>
+        </div>
+        <h3 class="tool-title">Cost-Effectiveness &amp; ICER Visualizer</h3>
+        <p class="tool-desc">Incremental Cost-Effectiveness Ratio (ICER) sandbox mapped against WHO GDP thresholds.</p>
+        <div id="heor-cea-mount-point" class="tool-canvas-slot"></div>
+      </div>
+    </div>
+
+    <!-- پنل ۴: تعادل کوهورت و نمرات تمایل -->
+    <div class="lab-panel" role="tabpanel" id="panel-smd" aria-labelledby="tab-smd" hidden>
+      <div class="tool-placeholder">
+        <div class="tool-meta">
+          <span class="tool-tag">Causal Inference</span>
+        </div>
+        <h3 class="tool-title">Cohort SMD &amp; Love Plot Generator</h3>
+        <p class="tool-desc">Standardized Mean Difference diagnostics for confounding control in observational cohorts.</p>
+        <div id="cohort-smd-mount-point" class="tool-canvas-slot"></div>
+      </div>
+    </div>
+
+    <!-- پنل ۵: پایایی ترکیبی و روایی همگرا -->
+    <div class="lab-panel" role="tabpanel" id="panel-crave" aria-labelledby="tab-crave" hidden>
+      <div class="tool-placeholder">
+        <div class="tool-meta">
+          <span class="tool-tag">Measurement Models</span>
+        </div>
+        <h3 class="tool-title">Composite Reliability &amp; AVE Engine</h3>
+        <p class="tool-desc">Fornell-Larcker criterion and automated indicator diagnostics from standardized factor loadings.</p>
+        <div id="cr-ave-mount-point" class="tool-canvas-slot"></div>
+      </div>
+    </div>
+
+    <!-- پنل ۶: شبیه‌ساز فارست‌پلات متاداده -->
+    <div class="lab-panel" role="tabpanel" id="panel-meta" aria-labelledby="tab-meta" hidden>
+      <div class="tool-placeholder">
+        <div class="tool-meta">
+          <span class="tool-tag">Evidence Synthesis</span>
+        </div>
+        <h3 class="tool-title">Meta-Analysis Forest Plot Sandbox</h3>
+        <p class="tool-desc">Fixed vs. random-effects pooling, I² heterogeneity analysis, and vector forest plot rendering.</p>
+        <div id="meta-forest-mount-point" class="tool-canvas-slot"></div>
+      </div>
+    </div>
+
+  </div>
+</aside>
+
       </div>
 
       <section
