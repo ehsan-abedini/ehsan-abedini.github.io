@@ -375,6 +375,69 @@
         <p class="tool-desc">Hospital performance evaluation via BOR, ALS, and BTR indices with live quadrant mapping.</p>
         <div id="pabon-lasso-mount-point" class="tool-canvas-slot">
           <!-- موتور گجت ۱ در گام بعد اینجا سوار می‌شود -->
+          <div class="tool-pane active" id="pane-pabon" role="tabpanel" aria-labelledby="tab-pabon">
+  <!-- سوییچ بین دو حالت تعاملی و ورود داده -->
+  <div class="tool-subnav" role="group" aria-label="Input Mode">
+    <button type="button" class="subnav-btn active" data-mode="slider">What-If Sandbox</button>
+    <button type="button" class="subnav-btn" data-mode="data">Multi-Unit Benchmark</button>
+  </div>
+
+  <!-- حالت اول: لغزنده‌های سناریوسازی تعاملی -->
+  <div id="pabon-slider-view" class="subview active">
+    <div class="pabon-controls">
+      <div class="ctrl-group">
+        <label for="pabon-beds">
+          <span>Active Beds</span>
+          <output id="out-beds">150</output>
+        </label>
+        <input type="range" id="pabon-beds" min="20" max="600" step="10" value="150" />
+      </div>
+
+      <div class="ctrl-group">
+        <label for="pabon-alos">
+          <span>Mean Length of Stay (ALOS - Days)</span>
+          <output id="out-alos">3.8</output>
+        </label>
+        <input type="range" id="pabon-alos" min="1.0" max="15.0" step="0.2" value="3.8" />
+      </div>
+
+      <div class="ctrl-group">
+        <label for="pabon-discharges">
+          <span>Annual Discharges</span>
+          <output id="out-discharges">8,500</output>
+        </label>
+        <input type="range" id="pabon-discharges" min="500" max="25000" step="250" value="8500" />
+      </div>
+    </div>
+
+    <!-- خلاصه شاخص‌های محاسباتی سریع -->
+    <div class="pabon-kpis">
+      <div class="kpi-card">
+        <span class="kpi-label">Occ. Rate (BOR)</span>
+        <span class="kpi-val" id="kpi-bor">59.0%</span>
+      </div>
+      <div class="kpi-card">
+        <span class="kpi-label">Turnover (BTR)</span>
+        <span class="kpi-val" id="kpi-btr">56.7</span>
+      </div>
+      <div class="kpi-card">
+        <span class="kpi-label">Interval (BTI)</span>
+        <span class="kpi-val" id="kpi-bti">2.6 d</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ویژوالایزر تعاملی Pabon Lasso بر پایه SVG -->
+  <div class="pabon-chart-container">
+    <svg id="pabon-svg" viewBox="0 0 360 260" aria-label="Pabon Lasso Diagram"></svg>
+    <div id="pabon-zone-badge" class="zone-badge">Zone II: Excess Capacity / Short Stay</div>
+  </div>
+
+  <p class="tool-insight" id="pabon-policy-insight">
+    <strong>Policy Insight:</strong> High turnover combined with low occupancy indicates rapid patient cycling or possible outpatient misclassification as inpatients.
+  </p>
+</div>
+
         </div>
       </div>
     </div>
