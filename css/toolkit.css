@@ -1,1 +1,84 @@
+.pabon-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.ctrl-group label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+  color: var(--text-muted, #64748b);
+}
+
+.ctrl-group output {
+  font-weight: 700;
+  color: var(--text-primary, #0f172a);
+}
+
+.ctrl-group input[type="range"] {
+  width: 100%;
+  accent-color: var(--accent-warm, #d97706);
+  cursor: pointer;
+}
+
+.pabon-kpis {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.kpi-card {
+  background: var(--bg-card-subtle, rgba(0, 0, 0, 0.02));
+  border: 1px solid var(--border-color, rgba(0, 0, 0, 0.08));
+  border-radius: 8px;
+  padding: 0.5rem 0.25rem;
+  text-align: center;
+}
+
+.kpi-label {
+  display: block;
+  font-size: 0.68rem;
+  color: var(--text-muted, #64748b);
+}
+
+.kpi-val {
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.pabon-chart-container {
+  position: relative;
+  border-radius: 8px;
+  background: var(--bg-card, #ffffff);
+  border: 1px solid var(--border-color, rgba(0, 0, 0, 0.08));
+  padding: 0.5rem;
+}
+
+.zone-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 12px;
+  border: 1px solid currentColor;
+  background: var(--bg-card, #ffffff);
+}
+
+.tool-insight {
+  margin-top: 0.75rem;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--text-secondary, #334155);
+}
+
+.pabon-point {
+  transition: cx 0.15s ease-out, cy 0.15s ease-out;
+}
    /* Research Toolkit Isolated Styles - Dr. Ehsan Abedini */
