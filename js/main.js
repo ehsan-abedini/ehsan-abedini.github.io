@@ -89,3 +89,59 @@
           trackedSections.forEach((section) => observer.observe(section));
         }
       })();
+// Research Lab Tab Controller
+(function initResearchLabTabs() {
+  const tablist = document.querySelector('.lab-tablist');
+  if (!tablist) return;
+
+  const tabs = Array.from(tablist.querySelectorAll('.lab-tab'));
+  const panels = Array.from(document.querySelectorAll('.lab-panel'));
+
+  function activateTab(targetTab) {
+    tabs.forEach(tab => {
+      const isSelected = tab === targetTab;
+      tab.classList.toggle('is-active', isSelected);
+      tab.setAttribute('aria-selected', isSelected);
+      tab.setAttribute('tabindex', isSelected ? '0' : '-1');
+    });
+
+    const targetPanelId = targetTab.getAttribute('aria-controls');
+    panels.forEach(panel => {
+      if (panel.id === targetPanelId) {
+        panel.removeAttribute('hidden');
+        panel.classList.add('is-active');
+      } else {
+        panel.setAttribute('hidden', '');
+        panel.classList.remove('is-active');
+      }
+    });
+  }
+
+  // رویداد کلیک تب‌ها
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => activateTab(tab));
+  });
+
+  // پشتیبانی کامل از کلیدهای جهت‌نمای کیبورد (Accessibility W3C)
+  tablist.addEventListener('keydown', (e) => {
+    const currentIndex = tabs.findIndex(tab => tab.getAttribute('aria-selected') === 'true');
+    let nextIndex = null;
+
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+      nextIndex = (currentIndex + 1) % tabs.length;
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+      nextIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+    } else if (e.key === 'Home') {
+      nextIndex = 0;
+    } else if (e.key === 'End') {
+      nextIndex = tabs.length - 1;
+    }
+
+    if (nextIndex !== null) {
+      e.preventDefault();
+      tabs[nextIndex].focus();
+      activateTab(tabs[nextIndex]);
+    }
+  });
+})();
+
