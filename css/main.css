@@ -2,7 +2,7 @@
         color-scheme: light;
         
         /* ۱. پایه‌های سطوح و پس‌زمینه (Parchment Surfaces) */
-        --bg-parchment: #FAF7EE;              /* پس‌زمینه اصلی صفحه */
+        --bg-parchment: #FFFFFF;              /* پس‌زمینه اصلی صفحه */
         --card-nokhodi: #F3EBD7;              /* پس‌زمینه کارت‌های بنتو */
         --paper: rgba(250, 247, 238, 0.90);    /* سطح کاغذ گرم و شیشه‌ای هدر و ماژول‌ها */
         --paper-solid: #FDFBF7;               /* کاغذ سفید گرم (بدون خیرگی مانیتور) */
