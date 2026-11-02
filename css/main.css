@@ -143,13 +143,14 @@ body {
         background: transparent;
       }
 
-      .progress span {
-        display: block;
-        height: 100%;
-        width: 0;
-        background: linear-gradient(90deg, #2563eb, #0d9488, #4f46e5);
-        box-shadow: 0 0 10px rgba(37, 99, 235, 0.5);
-      }
+   .progress span {
+     display: block;
+     height: 100%;
+     width: 0;
+     background: linear-gradient(90deg, #00CC99, #009E74);
+     box-shadow: 0 0 10px rgba(0, 204, 153, 0.4);
+   }
+
 
 .site-header {
   position: sticky;
