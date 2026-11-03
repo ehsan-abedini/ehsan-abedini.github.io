@@ -988,40 +988,40 @@ body {
         transform: translateY(-2px);
       }
 
-      /* Footer مدرن و شکیل */
+/* فوتر مدرن و شکیل با اولویت قطعی */
+footer.site-footer,
 .site-footer {
   font-size: 0.86rem;
-  color: var(--muted);
-  width: min(calc(100% - 32px), var(--max));
+  color: var(--muted, #4A5568);
+  width: min(calc(100% - 32px), var(--max, 1200px));
   padding: 1.25rem 1.75rem;
   margin: 4.5rem auto 2.5rem;
   
-  /* ۱. پس‌زمینه سفید شیشه‌ای با شفافیت ۹۰٪ (به جای نخودی) */
-  background: rgba(255, 255, 255, 0.90);
+  /* اعمال اجباری رنگ سفید شیشه‌ای ریسرچ‌گیت */
+  background: rgba(255, 255, 255, 0.90) !important;
+  background-color: #ffffff !important;
   
-  /* ۲. حفظ فیلتر بلور مدرن */
+  /* حفظ بلور مدرن */
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   
-  /* ۳. بردر خنثی و تمیز متناسب با پالت RG */
-  border: 1px solid var(--line);
-  border-radius: var(--radius-md);
-  
-  /* ۴. سایه نرم، خنثی و بدون هاله زرد/سبز تیره */
+  /* بردر و گوشه‌ها */
+  border: 1px solid var(--line, #E4E7EB) !important;
+  border-radius: var(--radius-md, 12px);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
 }
 
+.footer-container {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
 
-      .footer-container {
-        width: 100%;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 1rem;
-      }
 
       /* Media Queries */
       @media (max-width: 768px) {
